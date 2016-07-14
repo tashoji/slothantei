@@ -1,0 +1,147 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+<title>Machine</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<META http-equiv="Content-Style-Type" content="text/css" />
+</head>
+<body>
+	<img src="myjug3.jpg" width="160" height="400" align="right" />
+	<h2><td th:text="${macn1}"></td></h2>
+	 <form th:action="@{/controller/hantei}" method="get">
+		<table border="1" align="left">
+			<tr>
+				<th>総ゲーム数</th>
+				<td><INPUT type="number" size="5" name="hantei1" /></td>
+			</tr>
+			<tr>
+				<th>BIG</th>
+				<td><INPUT type="number" size="5" name="hantei2" /></td>
+			</tr>
+			<tr>
+				<th>REG</th>
+				<td><INPUT type="number" size="5" name="hantei3" /></td>
+			</tr>
+			<tr>
+			<td th:text="${setdif1}"></td>
+			<td><INPUT type="number" size="5" name="hantei4" /></td>
+			</tr>
+						<tr>
+			<td th:text="${setdif2}"></td>
+			<td><INPUT type="number" size="5" name="hantei5" /></td>
+			</tr>
+		</table>
+
+		<table border="1">
+			<tr>
+				<th></th>
+				<td>機械割</td>
+			</tr>
+			<tr>
+				<th>設定1</th>
+				<td>95.7%</td>
+			</tr>
+			<tr>
+				<th>設定2</th>
+				<td>97.9%</td>
+			</tr>
+			<tr>
+				<th>設定3</th>
+				<td>99.9%</td>
+			</tr>
+			<tr>
+				<th>設定4</th>
+				<td>102.8%</td>
+			</tr>
+			<tr>
+				<th>設定5</th>
+				<td>105.3%</td>
+			</tr>
+			<tr>
+				<th>設定6</th>
+				<td>109.4%</td>
+			</tr>
+		</table>
+		<p>
+			<input type="submit" value="判定" />
+		</p>
+		<span th:text="${total}"></span> <span th:text="${big}"></span> <span
+			th:text="${reg}"></span>
+	 天井：
+	  <td th:text="${ceiling}">し</td>
+	<br />
+	ヤメ時：
+		<td th:text="${finish}"></td>
+	<br /> ゾーン：
+		<td th:text="${zones}">なし</td>
+	<br /> 朝一リセット狙い：
+		<td th:text="${riset}"></td>
+	<br />
+	<div style="border-style: solid; padding: 20px; border-color: #C0C0C0">予想設定：設定5濃厚</div>
+	<br clear="right" />
+	</form>
+		<p>
+	<form action="/controller/machine" method="get">
+		<input type="submit" value="戻る" />
+	</form>
+	</p>
+
+
+	<style type="text/css">
+h2 {
+	position: relative;
+	padding: .25em 0 .5em .75em;
+	border-left: 6px solid #3498db;
+}
+
+h2::after {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	content: '';
+	width: 100%;
+	height: 0;
+	border-bottom: 1px solid #ccc;
+}
+
+input[type*="submit"] {
+	/* 文字サイズを1.4emに指定 */
+	font-size: 1.4em;
+	/* 縦方向に5px
+     * 横方向に30pxの余白を指定 */
+	padding: 5px 35px;
+	/* 文字色を白色に指定 */
+	color: #fff;
+	/* ボーダーをなくす */
+	border-style: none;
+	/* ボタンの色を設定する*/
+	background-color: #22d;
+	/* ボタンの影の指定
+     * 影の横幅を2px
+     * 縦長を2px
+     * ぼかしを3px
+     * 広がりを1px
+     * 色を#666（グレー）に指定 */
+	box-shadow: 2px 2px 3px 1px #666;
+	-moz-box-shadow: 2px 2px 3px 1px #666;
+	-webkit-box-shadow: 2px 2px 3px 1px #666;
+	/* テキストの影の指定
+     * 影の横幅を1px
+     * 縦長を1px
+     * ぼかしを1px
+     * 色を#000（白）に指定 */
+	text-shadow: 1px 1px 1px #fff;
+	/* グラデーションの指定 */
+	background: -moz-linear-gradient(bottom, #36d, #248 50%, #36d);
+	background: -webkit-gradient(linear, left bottom, left top, from(#36d),
+		color-stop(0.5, #248), to(#36d));
+	/* 角丸の指定 */
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	/* 透明度を20%に指定 */
+	opacity: 0.8;
+}
+</style>
+</body>
+</html>

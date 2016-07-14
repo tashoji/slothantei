@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+<title>Machine</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<META http-equiv="Content-Style-Type" content="text/css" />
+</head>
+<body>
+	<form th:action="@{/controller/finNewMachine}" method="get">
+		<h2>機種追加</h2>
+		<br /> 機種名:
+		<td><input type="text" size="30" name="title" value=""/></td>
+
+		<br /> 設定差項目1: <SELECT name="setdif1">
+			<OPTION value=""></OPTION>
+			<OPTION value="BIG">BIG</OPTION>
+			<OPTION value="REG">REG</OPTION>
+			<OPTION value="スイカ">スイカ</OPTION>
+			<OPTION value="弱チェリー">弱チェリー</OPTION>
+			<OPTION value="共通ベル">共通ベル</OPTION>
+			<OPTION value="ハズレ">ハズレ</OPTION>
+			<OPTION value="ART初当り">ART初当り</OPTION>
+			<OPTION value="ART直撃">ART直撃</OPTION>
+		</SELECT>
+		<table border="1">
+			<tr>
+				<th>設定1:</th>
+				<td>1/<INPUT type="number" size="4" name="set1" /></td>
+			</tr>
+			<tr>
+				<th>設定2:</th>
+				<td>1/<INPUT type="number" size="4" name="set2" /></td>
+			</tr>
+			<tr>
+				<th>設定3:</th>
+				<td>1/<INPUT type="number" size="4" name="set3" /></td>
+			</tr>
+			<tr>
+				<th>設定4:</th>
+				<td>1/<INPUT type="number" size="4" name="set4" /></td>
+			</tr>
+			<tr>
+				<th>設定5:</th>
+				<td>1/<INPUT type="number" size="4" name="set5" /></td>
+			</tr>
+			<tr>
+				<th>設定6:</th>
+				<td>1/<INPUT type="number" size="4" name="set6" /></td>
+			</tr>
+		</table>
+		<br /> 設定差項目2: <SELECT name="setdif2">
+			<OPTION value=""></OPTION>
+			<OPTION value="BIG">BIG</OPTION>
+			<OPTION value="REG">REG</OPTION>
+			<OPTION value="スイカ">スイカ</OPTION>
+			<OPTION value="弱チェリー">弱チェリー</OPTION>
+			<OPTION value="ハズレ">ハズレ</OPTION>
+		</SELECT>
+		<table border="1">
+			<tr>
+				<th>設定1:</th>
+				<td>1/<INPUT type="number" size="4" name="set1" /></td>
+			</tr>
+			<tr>
+				<th>設定2:</th>
+				<td>1/<INPUT type="number" size="4" name="set2" /></td>
+			</tr>
+			<tr>
+				<th>設定3:</th>
+				<td>1/<INPUT type="number" size="4" name="set3" /></td>
+			</tr>
+			<tr>
+				<th>設定4:</th>
+				<td>1/<INPUT type="number" size="4" name="set4" /></td>
+			</tr>
+			<tr>
+				<th>設定5:</th>
+				<td>1/<INPUT type="number" size="4" name="set5" /></td>
+			</tr>
+			<tr>
+				<th>設定6:</th>
+				<td>1/<INPUT type="number" size="4" name="set6" /></td>
+			</tr>
+		</table>
+				<br /> 天井：
+		<td><INPUT type="number" size="4" name="ceiling" />←ない場合は入力しないで下さい</td>
+		<br /> 朝一（リセット）判定： <SELECT name="risethantei">
+			<OPTION value="maru">〇</OPTION>
+			<OPTION value="sankaku">△</OPTION>
+			<OPTION value="batu">×</OPTION>
+			<br /> リセットメモ：
+			<td><INPUT type="text" size="7" name="riset" /></td>
+		</SELECT> <br /> ゾーン：
+		<td><INPUT type="text" size="7" name="zones" /></td>G 
+		<br /> ヤメ時：
+		<td><INPUT type="text" size="10" name="finish" /></td>
+	
+			<input type="submit" value="機種登録" />
+		</form>
+		<p>
+		<form action="/controller/title" method="get">
+			<input type="submit" value="戻る" />
+			</form>
+		</p>
+		<style type="text/css">
+h2 {
+	position: relative;
+	padding: .25em 0 .5em .75em;
+	border-left: 6px solid #3498db;
+}
+
+h2::after {
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	content: '';
+	width: 100%;
+	height: 0;
+	border-bottom: 1px solid #ccc;
+}
+
+input[type*="submit"] {
+	/* 文字サイズを1.4emに指定 */
+	font-size: 1.4em;
+	/* 縦方向に5px
+     * 横方向に30pxの余白を指定 */
+	padding: 5px 35px;
+	/* 文字色を白色に指定 */
+	color: #fff;
+	/* ボーダーをなくす */
+	border-style: none;
+	/* ボタンの色を設定する*/
+	background-color: #22d;
+	/* ボタンの影の指定
+     * 影の横幅を2px
+     * 縦長を2px
+     * ぼかしを3px
+     * 広がりを1px
+     * 色を#666（グレー）に指定 */
+	box-shadow: 2px 2px 3px 1px #666;
+	-moz-box-shadow: 2px 2px 3px 1px #666;
+	-webkit-box-shadow: 2px 2px 3px 1px #666;
+	/* テキストの影の指定
+     * 影の横幅を1px
+     * 縦長を1px
+     * ぼかしを1px
+     * 色を#000（白）に指定 */
+	text-shadow: 1px 1px 1px #fff;
+	/* グラデーションの指定 */
+	background: -moz-linear-gradient(bottom, #36d, #248 50%, #36d);
+	background: -webkit-gradient(linear, left bottom, left top, from(#36d),
+		color-stop(0.5, #248), to(#36d));
+	/* 角丸の指定 */
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	/* 透明度を20%に指定 */
+	opacity: 0.8;
+}
+</style>
+</body>
+</html>
