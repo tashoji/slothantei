@@ -32,14 +32,18 @@ public class ControllerSlot {
 	@RequestMapping("/controller/machine")
 	public String machine(@RequestParam(required=false) Integer id, String name,Model model){
 		List<Map<String, Object>>machine = macDao.selectAll();
+		model.addAttribute("id", id);
 		model.addAttribute("machines", machine);
+		System.out.println(id);
+		System.out.println(machine);
 		//htmlの指定
 		return "machine";
 	}
 	
-	@RequestMapping("controller/detail")
-	public String detail(@RequestParam(required=false)String macn1,Integer macid1, String zones,String riset,String finish,String setdif1,String setdif2, Integer ceiling,Model model){
-		//List<Map<String, Object>>detail = jdbcn.queryForList("select * from MACHINE_TABLE");
+	@RequestMapping("/controller/detail")
+	public String detail(@RequestParam(required=false)String macn1,Integer macid1, String zones,String riset,String finish,String setdif1,String setdif2, Integer ceiling,Integer hantei1,Integer hantei2,Integer hantei3,Integer set1,Integer set2,Integer set3,Integer set4,Integer set5,Integer set6,Model model){
+		List<Map<String, Object>>detail = jdbcn.queryForList("select * from MACHINE_TABLE where ID =?",macid1);
+		model.addAttribute("detail", detail);
 		model.addAttribute("ceiling", ceiling);
 		model.addAttribute("macn1", macn1);
 		model.addAttribute("macid", macid1);
@@ -48,88 +52,72 @@ public class ControllerSlot {
 		model.addAttribute("finish", finish);
 		model.addAttribute("setdif1", setdif1);
 		model.addAttribute("setdif2", setdif2);
+		model.addAttribute("set1", set1);
+		model.addAttribute("set2", set2);
+		model.addAttribute("set3", set3);
+		model.addAttribute("set4", set4);
+		model.addAttribute("set5", set5);
+		model.addAttribute("set6", set6);
+		System.out.println("detail:"+detail);
+		System.out.println(hantei1);
+		
 		return "detail";
 	}
 	
 	@RequestMapping("/controller/hantei")
-	public String hantei(@RequestParam(required=false)Integer hantei1,Integer hantei2,Integer hantei3,Model model){
-		model.addAttribute("hantei1",hantei1);
-		model.addAttribute("hantei2",hantei2);
-		model.addAttribute("hantei3",hantei3);
-		System.out.println(hantei1);
+	public String hantei(@RequestParam(required=false)String macn1,Integer macid1, String zones,String riset,String finish,String setdif1,String setdif2,Integer hantei1,Integer hantei2,Integer hantei3,Integer set1,Integer set2,Integer set3,Integer set4,Integer set5,Integer set6,Model model){
+		//List<Map<String, Object>>detail = jdbcn.queryForList("select * from MACHINE_TABLE");
+		System.out.println("hantei1:"+hantei1);
+		System.out.println(hantei2);	
+		System.out.println(hantei3);
+		model.addAttribute("hantei1", hantei1);
+		model.addAttribute("hantei2", hantei2);
+		model.addAttribute("hantei3", hantei3);
+		System.out.println(set1);
+
+//設定判別とその説明下
+		//hantei1(回転ゲーム数)÷hantei2（子役数）= kakusa1(子役確率)
+		//例500÷5=100
+		//（set1(設定1の子役確率)＋set2(設定2の子役確率)）÷２ = kakuritu1(設定1と2の中間の確率)
+		//例(150+140)÷2=145 
+		//kakusa1がkakuritu1より大きければ設定1
+		//（set2(設定2の子役確率)＋set3(設定3の子役確率)）÷２ = kakuritu2
+		//kakusa1がkakuritu1より小さく、kakuritu2より大きければ設定2
 		
-//		double total2;
-//		double big2;
-//		double reg2;
-//		int i;
-//		int j;
-//		int k;
-//
-//		// 確率計算
-//		big2 = hantei2 / hantei1;
-//		reg2 = hantei3 / hantei1;
-//		total2 = big2 + reg2;
-//
-//		if (reg2 <= 1.0 / 470.0) {
-//			System.out.println("REG確率はゴミです");
-//			i =1;
-//		} else if (reg2 <= 1.0 / 400.0) {
-//			System.out.println("REG確率は設定1の近似値です");
-//			i =1;
-//		} else if (reg2 <= 1.0 / 350.0) {
-//			System.out.println("REG確率は設定2の近似値です");
-//			i =2;
-//		} else if (reg2 <= 1.0 / 300.0) {
-//			System.out.println("REG確率は設定3の近似値です");
-//			i =3;
-//		} else if (reg2 <= 1.0 / 285.0) {
-//			System.out.println("REG確率は設定4の近似値です");
-//			i =4;
-//		} else if (reg2 <= 1.0 / 250.0) {
-//			System.out.println("REG確率は設定5の近似値です");
-//			i =5;
-//		} else if (reg2 <= 1.0 / 225.0) {
-//			System.out.println("REG確率は設定6の近似値です");
-//			i =6;
-//		} else {
-//			System.out.println("REG確率は神です");
-//			i =6;
-//		}
-//
-//		if (total2 <= 1.0 / 190.0) {
-//			System.out.println("合算確率はゴミです");
-//			j =1;
-//		} else if (total2 <= 1.0 / 165.0) {
-//			System.out.println("合算確率は設定1の近似値です");
-//			j =1;
-//		} else if (total2 <= 1.0 / 155.0) {
-//			System.out.println("合算確率は設定2の近似値です");
-//			j =2;
-//		} else if (total2 <= 1.0 / 143.0) {
-//			System.out.println("合算確率は設定3の近似値です");
-//			j =3;
-//		} else if (total2 <= 1.0 / 135.0) {
-//			System.out.println("合算確率は設定4の近似値です");
-//			j =4;
-//		} else if (total2 <= 1.0 / 126.0) {
-//			System.out.println("合算確率は設定5の近似値です");
-//			j =5;
-//		} else if (total2 <= 1.0 / 115.0) {
-//			System.out.println("合算確率は設定6の近似値です");
-//			j =6;
-//		} else {
-//			System.out.println("合算確率は神です");
-//			j =6;
-//		}
-//		System.out.println(hantei1);
-//		System.out.println(hantei3);
-//		System.out.println(i);
-//		System.out.println(j);
-//		k = (i + j) / 2; 
+//		int kakusa1;
+//		int kakusa2;
+//		int kakuritu1;
+//		int kakuritu2;
+//		int kakuritu3;
+//		int kakuritu4;
+//		int kakuritu5;
 //		
-//		System.out.println("予想設定は" + k + "です");
-//		
-		return "detail";
+//		kakusa1 = hantei1 /hantei2;
+//		kakusa2 = hantei1 /hantei3;
+//		kakuritu1 = (set1 + set2) / 2;
+//		kakuritu2 = (set2 + set3) / 2;
+//		kakuritu3 = (set3 + set4) / 2;
+//		kakuritu4 = (set4 + set5) / 2;
+//		kakuritu5 = (set5 + set6) / 2;
+//			
+//		if (kakusa1 <= kakuritu1) {
+//			System.out.println(setdif1 +"確率は設定1の近似値またはそれ以上です");
+//		} else if (kakusa1 <= kakuritu2) {
+//			System.out.println(setdif1 +"確率は設定2の近似値です");
+//		} else if (kakusa1 <= kakuritu3) {
+//			System.out.println(setdif1 +"確率は設定3の近似値です");
+//		} else if (kakusa1 <= kakuritu4) {
+//			System.out.println(setdif1 +"確率は設定4の近似値です");
+//		} else if (kakusa1 <= kakuritu5) {
+//			System.out.println(setdif1 +"確率は設定5の近似値です");
+//		}else{
+//			System.out.println(setdif1 +"確率は設定6の近似値またはそれ以上です");
+//			}
+
+//設定判別とその説明上
+//hantei1,hantei2
+
+		return "redirect:/controller/detail";
 	}
 	
 	@RequestMapping("/controller/detail2")
