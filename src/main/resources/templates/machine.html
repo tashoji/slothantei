@@ -10,21 +10,28 @@
 		<h2>機種名</h2>
 		<span th:each="machine : ${machines}">
 			<p>
-			<form action="/controller/detail" method="get">
+			<form action="/controller/detail" method="post">
 				<input type="submit" th:value="${machine.MACHINE_NAME}" name = "macn1"/>
 				<input type="hidden" th:value="${machine.ID}" name = "macid1" />
-				<input type="hidden" th:value="${machine.CEILING}" name = "ceiling" />
+  			<input type="hidden" th:value="${machine.CEILING}" name = "ceiling" />
 <input type="hidden" th:value="${machine.ZONES}" name = "zones" />
 <input type="hidden" th:value="${machine.RISET}" name = "riset" />
 <input type="hidden" th:value="${machine.FINISH}" name = "finish" />
 <input type="hidden" th:value="${machine.SET_DIF1}" name = "setdif1" />
 <input type="hidden" th:value="${machine.SET_DIF2}" name = "setdif2" />
+<input type="hidden" th:value="${machine.SETTING_1}" name = "set1" />
+<input type="hidden" th:value="${machine.SETTING_2}" name = "set2" />
+<input type="hidden" th:value="${machine.SETTING_3}" name = "set3" />
+<input type="hidden" th:value="${machine.SETTING_4}" name = "set4" />
+<input type="hidden" th:value="${machine.SETTING_5}" name = "set5" />
+<input type="hidden" th:value="${machine.SETTING_6}" name = "set6" />	
+
 
 </form>
 			</p>
 		</span>
 
-		<p><form action="/controller/title" method="get">
+		<p><form action="/controller/title" method="post">
 			<input type="submit" value="戻る" />
 			</form>	
 			</p>

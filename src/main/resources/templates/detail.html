@@ -6,9 +6,20 @@
 <META http-equiv="Content-Style-Type" content="text/css" />
 </head>
 <body>
-	<img src="myjug3.jpg" width="160" height="400" align="right" />
+		 <form th:action="@{/controller/hantei}" method="post">
 	<h2><td th:text="${macn1}"></td></h2>
-	 <form th:action="@{/controller/hantei}" method="get">
+			<span th:each="details : ${detail}">
+  <input type="hidden" th:value="${details.ZONES}" name = "zones" />
+<input type="hidden"  th:value="${details.RISET}" name = "riset" />
+<input type="hidden" th:value="${details.FINISH}" name = "finish" />
+<input type="hidden" th:value="${details.SET_DIF1}" name = "setdif1" />
+<input type="hidden" th:value="${details.SET_DIF2}" name = "setdif2" />
+<input type="hidden" th:value="${details.SETTING_1}" name = "set1" />
+<input type="hidden" th:value="${details.SETTING_2}" name = "set2" />
+<input type="hidden" th:value="${details.SETTING_3}" name = "set3" />
+<input type="hidden" th:value="${details.SETTING_4}" name = "set4" />
+<input type="hidden" th:value="${details.SETTING_5}" name = "set5" />
+<input type="hidden" th:value="${details.SETTING_6}" name = "set6" />
 		<table border="1" align="left">
 			<tr>
 				<th>総ゲーム数</th>
@@ -23,15 +34,14 @@
 				<td><INPUT type="number" size="5" name="hantei3" /></td>
 			</tr>
 			<tr>
-			<td th:text="${setdif1}"></td>
+			<td th:text="${details.SET_DIF1}"></td>
 			<td><INPUT type="number" size="5" name="hantei4" /></td>
 			</tr>
 						<tr>
-			<td th:text="${setdif2}"></td>
+			<td th:text="${details.SET_DIF2}"></td>
 			<td><INPUT type="number" size="5" name="hantei5" /></td>
 			</tr>
 		</table>
-
 		<table border="1">
 			<tr>
 				<th></th>
@@ -68,20 +78,22 @@
 		<span th:text="${total}"></span> <span th:text="${big}"></span> <span
 			th:text="${reg}"></span>
 	 天井：
-	  <td th:text="${ceiling}">し</td>
+	  <td th:text="${details.ceiling}">し</td>
 	<br />
 	ヤメ時：
-		<td th:text="${finish}"></td>
+		<td th:text="${details.finish}"></td>
 	<br /> ゾーン：
-		<td th:text="${zones}">なし</td>
+		<td th:text="${details.zones}">なし</td>
 	<br /> 朝一リセット狙い：
-		<td th:text="${riset}"></td>
+		<td th:text="${details.riset}"></td>
 	<br />
+	
+		</span>
 	<div style="border-style: solid; padding: 20px; border-color: #C0C0C0">予想設定：設定5濃厚</div>
 	<br clear="right" />
 	</form>
 		<p>
-	<form action="/controller/machine" method="get">
+	<form action="/controller/machine" method="post">
 		<input type="submit" value="戻る" />
 	</form>
 	</p>

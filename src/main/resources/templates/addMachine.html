@@ -6,7 +6,7 @@
 <META http-equiv="Content-Style-Type" content="text/css" />
 </head>
 <body>
-	<form th:action="@{/controller/finNewMachine}" method="get">
+	<form th:action="@{/controller/finNewMachine}" method="post">
 		<h2>機種追加</h2>
 		<br /> 機種名:
 		<td><input type="text" size="30" name="title" value=""/></td>
@@ -98,7 +98,7 @@
 			<input type="submit" value="機種登録" />
 		</form>
 		<p>
-		<form action="/controller/title" method="get">
+		<form action="/controller/title" method="post">
 			<input type="submit" value="戻る" />
 			</form>
 		</p>

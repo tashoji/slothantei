@@ -6,13 +6,13 @@
 <META http-equiv="Content-Style-Type" content="text/css" />
 </head>
 <body>
-	<form th:action="@{/controller/finEditMachine}" method="get">
+	<form th:action="@{/controller/finEditMachine}" method="post">
 	<h2>機種データ編集</h2>
 	<br /> 機種名:
 	<SELECT name ="namemachine">
 		<span th:each="edit : ${editMachine}">
 			<OPTION th:text="${edit.MACHINE_NAME}"></OPTION>
-		<!--  	<input type="hidden" th:value="${edit.ID}" name = "macid2"></input>-->
+			<input type="hidden" th:value="${edit.ID}" name = "macid2"></input>
 	</span>
 	</SELECT>
 
@@ -110,7 +110,7 @@
 	</p>
 </form>
 	<p>
-	<form action="/controller/title" method="get">
+	<form action="/controller/title" method="post">
 		<input type="submit" value="戻る" />
 	</form>
 	</p>
