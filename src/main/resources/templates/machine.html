@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<html xmlns:th="http://www.thymeleaf.org" lang="ja" >
 <head>
 <title>Machine</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -25,6 +25,12 @@
 <input type="hidden" th:value="${machine.SETTING_4}" name = "set4" />
 <input type="hidden" th:value="${machine.SETTING_5}" name = "set5" />
 <input type="hidden" th:value="${machine.SETTING_6}" name = "set6" />	
+<input type="hidden" th:value="${machine.SETTING2_1}" name = "set1" />
+<input type="hidden" th:value="${machine.SETTING2_2}" name = "set2" />
+<input type="hidden" th:value="${machine.SETTING2_3}" name = "set3" />
+<input type="hidden" th:value="${machine.SETTING2_4}" name = "set4" />
+<input type="hidden" th:value="${machine.SETTING2_5}" name = "set5" />
+<input type="hidden" th:value="${machine.SETTING2_6}" name = "set6" />
 
 
 </form>
@@ -35,26 +41,22 @@
 			<input type="submit" value="戻る" />
 			</form>	
 			</p>
-		<p>
+	<!--  	<p>
 			<input class="button3" type="button" value="バジリスク絆"
 				onclick="location.href='detail2.html'" />
-		</p>
+		</p> -->	
 	</Center>
 
 	<style type="text/css">
-HTML {
-	backgroundi-image: url(tuno.gif);
-	background-repeat: repeat-y;
-	background-size: 10% 15%;
-	background-position: left;
-}
 
-body {
-	background-image: url(tuno.gif);
-	background-repeat: repeat-y;
-	background-size: 10% 15%;
-	background-position: right;
-}
+
+/*HTML {
+	background-image: url(../i2.jpg),url(../i1.jpg);
+	background-position: right,left;
+	background-attachment:fixed,fixed;
+	background-repeat:no-repeat,no-repeat;
+	background-size:contain,contain;
+}*/
 
 h2 {
 	position: relative;

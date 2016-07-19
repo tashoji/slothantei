@@ -6,93 +6,93 @@
 <META http-equiv="Content-Style-Type" content="text/css" />
 </head>
 <body>
-		 <form th:action="@{/controller/hantei}" method="post">
-	<h2><td th:text="${macn1}"></td></h2>
-			<span th:each="details : ${detail}">
-  <input type="hidden" th:value="${details.ZONES}" name = "zones" />
-<input type="hidden"  th:value="${details.RISET}" name = "riset" />
-<input type="hidden" th:value="${details.FINISH}" name = "finish" />
-<input type="hidden" th:value="${details.SET_DIF1}" name = "setdif1" />
-<input type="hidden" th:value="${details.SET_DIF2}" name = "setdif2" />
-<input type="hidden" th:value="${details.SETTING_1}" name = "set1" />
-<input type="hidden" th:value="${details.SETTING_2}" name = "set2" />
-<input type="hidden" th:value="${details.SETTING_3}" name = "set3" />
-<input type="hidden" th:value="${details.SETTING_4}" name = "set4" />
-<input type="hidden" th:value="${details.SETTING_5}" name = "set5" />
-<input type="hidden" th:value="${details.SETTING_6}" name = "set6" />
-		<table border="1" align="left">
-			<tr>
-				<th>総ゲーム数</th>
-				<td><INPUT type="number" size="5" name="hantei1" /></td>
-			</tr>
-			<tr>
-				<th>BIG</th>
-				<td><INPUT type="number" size="5" name="hantei2" /></td>
-			</tr>
-			<tr>
-				<th>REG</th>
-				<td><INPUT type="number" size="5" name="hantei3" /></td>
-			</tr>
-			<tr>
-			<td th:text="${details.SET_DIF1}"></td>
-			<td><INPUT type="number" size="5" name="hantei4" /></td>
-			</tr>
-						<tr>
-			<td th:text="${details.SET_DIF2}"></td>
-			<td><INPUT type="number" size="5" name="hantei5" /></td>
-			</tr>
-		</table>
-		<table border="1">
-			<tr>
-				<th></th>
-				<td>機械割</td>
-			</tr>
-			<tr>
-				<th>設定1</th>
-				<td>95.7%</td>
-			</tr>
-			<tr>
-				<th>設定2</th>
-				<td>97.9%</td>
-			</tr>
-			<tr>
-				<th>設定3</th>
-				<td>99.9%</td>
-			</tr>
-			<tr>
-				<th>設定4</th>
-				<td>102.8%</td>
-			</tr>
-			<tr>
-				<th>設定5</th>
-				<td>105.3%</td>
-			</tr>
-			<tr>
-				<th>設定6</th>
-				<td>109.4%</td>
-			</tr>
-		</table>
-		<p>
-			<input type="submit" value="判定" />
-		</p>
-		<span th:text="${total}"></span> <span th:text="${big}"></span> <span
-			th:text="${reg}"></span>
-	 天井：
-	  <td th:text="${details.ceiling}">し</td>
-	<br />
-	ヤメ時：
-		<td th:text="${details.finish}"></td>
-	<br /> ゾーン：
-		<td th:text="${details.zones}">なし</td>
-	<br /> 朝一リセット狙い：
-		<td th:text="${details.riset}"></td>
-	<br />
-	
+	<form th:action="@{/controller/hantei}" method="post">
+		<h2>
+			<td th:text="${macn1}"></td>
+		</h2>
+		<span th:each="details : ${detail}"> 
+		<input type="hidden"
+			th:value="${details.ID}" name="macid1" /> <input type="hidden"
+			th:value="${details.MACHINE_NAME}" name="macn1" /><input type="hidden"
+			th:value="${details.ZONES}" name="zones" /> <input type="hidden"
+			th:value="${details.RISET}" name="riset" /> <input type="hidden"
+			th:value="${details.FINISH}" name="finish" /> <input type="hidden"
+			th:value="${details.SET_DIF1}" name="setdif1" /> <input
+			type="hidden" th:value="${details.SET_DIF2}" name="setdif2" /> <input
+			type="hidden" th:value="${details.SETTING_1}" name="set1" /> <input
+			type="hidden" th:value="${details.SETTING_2}" name="set2" /> <input
+			type="hidden" th:value="${details.SETTING_3}" name="set3" /> <input
+			type="hidden" th:value="${details.SETTING_4}" name="set4" /> <input
+			type="hidden" th:value="${details.SETTING_5}" name="set5" /> <input
+			type="hidden" th:value="${details.SETTING_6}" name="set6" />
+			<input
+			type="hidden" th:value="${details.SETTING2_1}" name="set21" /> <input
+			type="hidden" th:value="${details.SETTING2_2}" name="set22" /> <input
+			type="hidden" th:value="${details.SETTING2_3}" name="set23" /> <input
+			type="hidden" th:value="${details.SETTING2_4}" name="set24" /> <input
+			type="hidden" th:value="${details.SETTING2_5}" name="set25" /> <input
+			type="hidden" th:value="${details.SETTING2_6}" name="set26" />
+			
+			<table border="1" align="left">
+				<tr>
+					<th>回転ゲーム数</th>
+					<td><INPUT type="number" size="5" name="hantei1" th:value ="${hantei1}" /></td>
+				</tr>
+				<tr>
+					<td th:text="${details.SET_DIF1}"></td>
+					<td><INPUT type="number" size="5" name="hantei2" th:value ="${hantei2}"/></td>
+				</tr>
+				<tr>
+					<td th:text="${details.SET_DIF2}"></td>
+					<td><INPUT type="number" size="5" name="hantei3" th:value ="${hantei3}"/></td>
+				</tr>
+			</table>
+			<table border="1">
+				<tr>
+					<th></th>
+					<td>機械割</td>
+				</tr>
+				<tr>
+					<th>設定1</th>
+					<td>95.7%</td>
+				</tr>
+				<tr>
+					<th>設定2</th>
+					<td>97.9%</td>
+				</tr>
+				<tr>
+					<th>設定3</th>
+					<td>99.9%</td>
+				</tr>
+				<tr>
+					<th>設定4</th>
+					<td>102.8%</td>
+				</tr>
+				<tr>
+					<th>設定5</th>
+					<td>105.3%</td>
+				</tr>
+				<tr>
+					<th>設定6</th>
+					<td>109.4%</td>
+				</tr>
+			</table>
+			
+			<p>
+				<input type="image" src="../PUSH.png" value="判定" width="150" height="80"/>
+			</p> <span th:text="${total}"></span> <span th:text="${big}"></span> <span
+			th:text="${reg}"></span> 天井：
+			<td th:text="${details.ceiling}">し</td> <br /> ヤメ時：
+			<td th:text="${details.finish}"></td> <br /> ゾーン：
+			<td th:text="${details.zones}">なし</td> <br /> 朝一リセット狙い：
+			<td th:text="${details.riset}"></td> <br />
+
 		</span>
-	<div style="border-style: solid; padding: 20px; border-color: #C0C0C0">予想設定：設定5濃厚</div>
-	<br clear="right" />
+		予想設定
+		<div style="border-style: solid; width:25%; padding: 20px; border-color: #C0C0C0"><td th:text="${forecast}"></td><br><td th:text="${forecast2}"></td></br></div>
+		<br clear="right" />
 	</form>
-		<p>
+	<p>
 	<form action="/controller/machine" method="post">
 		<input type="submit" value="戻る" />
 	</form>

@@ -1,24 +1,47 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" lang="ja">
 <head>
-<title>title</title>
+<title>Machine</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<META http-equiv="Content-Style-Type" content="text/css"/>
-<link rel="stylesheet" type="text/css" href="title.css"/>
+<META http-equiv="Content-Style-Type" content="text/css" />
 </head>
 <body>
-	<Center>
-		<h1>	<img width="85" height="50" src="../fig_main.jpg"/>スロット設定判別ツール
-		<img width="85" height="50" src="../fig_main.jpg"/>
-		</h1>
-    
-		<style type="text/css">
-h1 {
+	<form th:action="@{/controller/editMachine}" method="post">
+		<h2>機種データ編集</h2>
+		<br /> 機種名: <SELECT name="namemachine">
+			<span th:each="select : ${selectMachine}">
+				<OPTION th:text="${select.MACHINE_NAME}" name="macn3"></OPTION> 
+		</span>
+		</SELECT> 
+		<p>
+			<input type="submit" value="変更" />
+		</p>
+	</form>
+	
+		<form th:action="@{/controller/finDeleteMachine}" method="post">
+		<h2>機種データ削除</h2>
+		<br /> 機種名: <SELECT name="namemachine">
+			<span th:each="select : ${selectMachine}">
+				<OPTION th:text="${select.MACHINE_NAME}"></OPTION>
+		</span>
+		</SELECT> 
+		<p>
+		 <input type="submit" value="削除" />
+		</p>
+		</form>
+	<p>
+	<form action="/controller/title" method="post">
+		<input type="submit" value="戻る" />
+	</form>
+	</p>
+	<style type="text/css">
+h2 {
 	position: relative;
 	padding: .25em 0 .5em .75em;
 	border-left: 6px solid #3498db;
 }
-h1::after {
+
+h2::after {
 	position: absolute;
 	left: 0;
 	bottom: 0;
@@ -27,25 +50,6 @@ h1::after {
 	height: 0;
 	border-bottom: 1px solid #ccc;
 }
-</style>
-		<p>
-		    <form action="/controller/machine" method="post">
-			    <input type="submit" value="設定判別"/>
-			</form>
-		</p>
-		<p>
-		    <form action="/controller/addMachine" method="post">
-			    <input type="submit" value="機種追加"/>
-			</form>
-		</p>
-		<p>
-		    <form action="/controller/selectMachine" method="post">
-			    <input type="submit" value="機種データ編集"/>
-			</form>
-		</p>
-		
-
-		<style type="text/css">
 
 input[type*="submit"] {
 	/* 文字サイズを1.4emに指定 */
@@ -86,6 +90,5 @@ input[type*="submit"] {
 	opacity: 0.8;
 }
 </style>
-		</Center>
 </body>
 </html>

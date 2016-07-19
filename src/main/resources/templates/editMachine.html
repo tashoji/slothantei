@@ -7,108 +7,122 @@
 </head>
 <body>
 	<form th:action="@{/controller/finEditMachine}" method="post">
-	<h2>機種データ編集</h2>
-	<br /> 機種名:
-	<SELECT name ="namemachine">
-		<span th:each="edit : ${editMachine}">
-			<OPTION th:text="${edit.MACHINE_NAME}"></OPTION>
-			<input type="hidden" th:value="${edit.ID}" name = "macid2"></input>
-	</span>
-	</SELECT>
+		<h2>機種データ編集</h2>
+		<br /> 機種名:
+		<td th:text="${namemachine}" name="nacn2"></td> <br /> 設定差項目1: <SELECT
+			name="setdif1">
+			<span th:each="details : ${detail}">
+				<OPTION th:text="${details.SET_DIF1}"></OPTION> <!--	<OPTION th:value ="${setdif1}"></OPTION> -->
+		</span>
+			<OPTION value=""></OPTION>
+			<OPTION value="BIG">BIG</OPTION>
+			<OPTION value="REG">REG</OPTION>
+			<OPTION value="スイカ">スイカ</OPTION>
+			<OPTION value="弱チェリー">弱チェリー</OPTION>
+			<OPTION value="共通ベル">共通ベル</OPTION>
+			<OPTION value="ハズレ">ハズレ</OPTION>
+			<OPTION value="ART初当り">ART初当り</OPTION>
+			<OPTION value="ART直撃">ART直撃</OPTION>
+		</SELECT> <span th:each="details : ${detail}"> <input type="hidden"
+			th:value="${details.MACHINE_NAME}" name="macn2" /> <input
+			type="hidden" th:value="${details.ID}" name="macid2" />
+			<table border="1">
+				<tr>
+					<th>設定1:</th>
+					<td>1/ <INPUT type="number" size="5" name="set1"
+						th:value="${details.SETTING_1}" /></td>
+				</tr>
+				<tr>
+					<th>設定2:</th>
+					<td>1/<INPUT type="number" size="5" name="set2"
+						th:value="${details.SETTING_2}" /></td>
+				</tr>
+				<tr>
+					<th>設定3:</th>
+					<td>1/<INPUT type="number" size="5" name="set3"
+						th:value="${details.SETTING_3}" /></td>
+				</tr>
+				<tr>
+					<th>設定4:</th>
+					<td>1/<INPUT type="number" size="5" name="set4"
+						th:value="${details.SETTING_4}" /></td>
+				</tr>
+				<tr>
+					<th>設定5:</th>
+					<td>1/<INPUT type="number" size="5" name="set5"
+						th:value="${details.SETTING_5}" /></td>
+				</tr>
+				<tr>
+					<th>設定6:</th>
+					<td>1/<INPUT type="number" size="5" name="set6"
+						th:value="${details.SETTING_6}" /></td>
+				</tr>
+			</table> <br /> 設定差項目2: <SELECT name="setdif2">
+				<span th:each="details : ${detail}">
+					<OPTION th:text="${details.SET_DIF2}"></OPTION> <!--	<OPTION th:value ="${setdif1}"></OPTION> -->
+			</span>
+				<OPTION value=""></OPTION>
+				<OPTION value="BIG">BIG</OPTION>
+				<OPTION value="REG">REG</OPTION>
+				<OPTION value="スイカ">スイカ</OPTION>
+				<OPTION value="弱チェリー">弱チェリー</OPTION>
+				<OPTION value="共通ベル">共通ベル</OPTION>
+				<OPTION value="ハズレ">ハズレ</OPTION>
+				<OPTION value="ART初当り">ART初当り</OPTION>
+				<OPTION value="ART直撃">ART直撃</OPTION>
+		</SELECT>
+			<table border="1">
+				<tr>
+					<th>設定1:</th>
+					<td>1/<INPUT type="number" size="5" name="set21"
+						th:value="${details.SETTING2_1}" /></td>
+				</tr>
+				<tr>
+					<th>設定2:</th>
+					<td>1/<INPUT type="number" size="5" name="set22"
+						th:value="${details.SETTING2_2}" /></td>
+				</tr>
+				<tr>
+					<th>設定3:</th>
+					<td>1/<INPUT type="number" size="5" name="set23"
+						th:value="${details.SETTING2_3}" /></td>
+				</tr>
+				<tr>
+					<th>設定4:</th>
+					<td>1/<INPUT type="number" size="5" name="set24"
+						th:value="${details.SETTING2_4}" /></td>
+				</tr>
+				<tr>
+					<th>設定5:</th>
+					<td>1/<INPUT type="number" size="5" name="set25"
+						th:value="${details.SETTING2_5}" /></td>
+				</tr>
+				<tr>
+					<th>設定6:</th>
+					<td>1/<INPUT type="number" size="5" name="set26"
+						th:value="${details.SETTING2_6}" /></td>
+				</tr>
+			</table> <br /> 天井：
+			<td><INPUT type="number" size="4" name="ceiling"
+				th:value="${details.CEILING}" /></td> <br /> 朝一（リセット）判定： <SELECT
+			name="riset">
+				<OPTION value="〇">〇</OPTION>
+				<OPTION value="△">△</OPTION>
+				<OPTION value="×">×</OPTION>
+				<br /> リセットメモ：
+				<td><INPUT type="text" size="7" name="zo" /></td>
+		</SELECT> <br /> ゾーン：
+			<td><INPUT type="text" size="7" name="zones"
+				th:value="${details.ZONES}" /></td>G <br /> ヤメ時：
+			<td><INPUT type="text" size="10" name="finish"
+				th:value="${details.FINISH}" /></td>
 
-	<br /> 設定差項目1:
-	<SELECT name="setdif">
-			<span th:each="edit : ${editMachine}">
-			<OPTION th:text="${edit.set_dif1}"></OPTION>
-	</span>
-		<OPTION value=""></OPTION>
-		<OPTION value="big">BIG</OPTION>
-		<OPTION value="reg">REG</OPTION>
-		<OPTION value="suika">スイカ</OPTION>
-		<OPTION value="weakcherry">弱チェリー</OPTION>
-		<OPTION value="hazure">ハズレ</OPTION>
-	</SELECT>
-	<table border="1">
-		<tr>
-			<th>設定1:</th>
-			<td>1/
-			<INPUT type="number" size="5" name="set1" th:value="${setting1}" /></td>
-		</tr>
-		<tr>
-			<th>設定2:</th>
-			<td>1/<INPUT type="number" size="5" name="set2" /></td>
-		</tr>
-		<tr>
-			<th>設定3:</th>
-			<td>1/<INPUT type="number" size="5" name="set3" /></td>
-		</tr>
-		<tr>
-			<th>設定4:</th>
-			<td>1/<INPUT type="number" size="5" name="set4" /></td>
-		</tr>
-		<tr>
-			<th>設定5:</th>
-			<td>1/<INPUT type="number" size="5" name="set5" /></td>
-		</tr>
-		<tr>
-			<th>設定6:</th>
-			<td>1/<INPUT type="number" size="5" name="set6" /></td>
-		</tr>
-	</table>
-	<br /> 設定差項目2:
-	<SELECT name="setdif">
-		<OPTION value=""></OPTION>
-		<OPTION value="big">BIG</OPTION>
-		<OPTION value="reg">REG</OPTION>
-		<OPTION value="suika">スイカ</OPTION>
-		<OPTION value="weakcherry">弱チェリー</OPTION>
-		<OPTION value="hazure">ハズレ</OPTION>
-	</SELECT>
-	<table border="1">
-		<tr>
-			<th>設定1:</th>
-			<td>1/<INPUT type="number" size="5" name="set1" /></td>
-		</tr>
-		<tr>
-			<th>設定2:</th>
-			<td>1/<INPUT type="number" size="5" name="set2" /></td>
-		</tr>
-		<tr>
-			<th>設定3:</th>
-			<td>1/<INPUT type="number" size="5" name="set3" /></td>
-		</tr>
-		<tr>
-			<th>設定4:</th>
-			<td>1/<INPUT type="number" size="5" name="set4" /></td>
-		</tr>
-		<tr>
-			<th>設定5:</th>
-			<td>1/<INPUT type="number" size="5" name="set5" /></td>
-		</tr>
-		<tr>
-			<th>設定6:</th>
-			<td>1/<INPUT type="number" size="5" name="set6" /></td>
-		</tr>
-	</table>
-	<br /> 朝一（リセット）判定：
-	<SELECT name="riset">
-		<OPTION value="maru">〇</OPTION>
-		<OPTION value="sankaku">△</OPTION>
-		<OPTION value="batu">×</OPTION>
-		<br /> リセットメモ：
-		<td><INPUT type="text" size="7" name="zo" /></td>
-	</SELECT>
-	<br /> ゾーン：
-	<td><INPUT type="text" size="7" name="zones" /></td>G
-	<br /> ヤメ時：
-	<td><INPUT type="text" size="10" name="finish" /></td>
+			<p>
+				<input type="submit" value="変更" />
+			</p>
+		</span>
+	</form>
 
-	<p>
-		<input type="submit" value="変更" />
-		
-		<input type="submit" value="削除" />
-	</p>
-</form>
 	<p>
 	<form action="/controller/title" method="post">
 		<input type="submit" value="戻る" />
