@@ -235,6 +235,11 @@ public class ControllerSlot {
 		System.out.println(detail);
 		return "editMachine";
 	}
+	
+	@RequestMapping("/controller/error")
+	public String error() {
+		return "error";
+	}
 
 	@RequestMapping("/controller/finNewMachine")
 	public String finNewMachine(@RequestParam(required = false) String title, Integer ceiling, String zones,
@@ -243,6 +248,14 @@ public class ControllerSlot {
 			Integer set25, Integer set26, Model model) {
 		Map<String, Object> map1 = new HashMap<String, Object>();
 		// map1.put("id", id);
+		
+		if (title == "") {
+			return "error";
+			
+		}else{
+			
+		
+		
 		map1.put("title", title);
 		map1.put("ceiling", ceiling);
 		map1.put("zones", zones);
@@ -275,6 +288,8 @@ public class ControllerSlot {
 		model.addAttribute(I);
 		// htmlの指定
 		return "finNewMachine";
+		
+		}
 	}
 
 	@RequestMapping("/controller/finEditMachine")

@@ -1,100 +1,151 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" lang="ja">
 <head>
-<title>Machine</title>
+<title>すろっと</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<META http-equiv="Content-Style-Type" content="text/css" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<link
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+	crossorigin="anonymous">
+</link>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+	crossorigin="anonymous">
+</script>
 </head>
 <body>
+<div class="jumbotron">
 	<form th:action="@{/controller/finNewMachine}" method="post">
 		<h2>機種追加</h2>
-		<br /> 機種名:
-		<td><input type="text" size="30" name="title" value="" /></td> <br />
-		設定差項目1: <SELECT name="setdif1">
-			<OPTION value=""></OPTION>
-			<OPTION value="BIG">BIG</OPTION>
-			<OPTION value="REG">REG</OPTION>
-			<OPTION value="スイカ">スイカ</OPTION>
-			<OPTION value="弱チェリー">弱チェリー</OPTION>
-			<OPTION value="共通ベル">共通ベル</OPTION>
-			<OPTION value="ハズレ">ハズレ</OPTION>
-			<OPTION value="ART初当り">ART初当り</OPTION>
-			<OPTION value="ART直撃">ART直撃</OPTION>
-		</SELECT>
-		<table border="1">
+		<h3>機種名:
+		<input type="text" size="30" name="title" value="" class="form-control"/></h3>
+		<a class="btn btn-default" data-toggle="collapse" href="#collapseExample">
+	表示／非表示
+</a>
+<div class="collapse" id="collapseExample">
+		<table border="1" class = "table" >
+			<tr>
+				<th>設定差項目1:</th>
+				<td><SELECT name="setdif1" class="form-control">
+				<OPTION value=""></OPTION>
+				<OPTION value="BIG">BIG</OPTION>
+				<OPTION value="REG">REG</OPTION>
+				<OPTION value="合成">合成</OPTION>
+				<OPTION value="赤7">赤7</OPTION>
+				<OPTION value="青7">青7</OPTION>
+				<OPTION value="白7">白7</OPTION>
+				<OPTION value="リプレイ">リプレイ</OPTION>
+				<OPTION value="スイカ">スイカ</OPTION>
+				<OPTION value="弱スイカ">弱スイカ</OPTION>
+				<OPTION value="強スイカ">強スイカ</OPTION>
+				<OPTION value="チェリー">チェリー</OPTION>
+				<OPTION value="弱チェリー">弱チェリー</OPTION>
+				<OPTION value="強チェリー">強チェリー</OPTION>
+				<OPTION value="中段チェリー">中段チェリー</OPTION>
+				<OPTION value="共通ベル">共通ベル</OPTION>
+				<OPTION value="強ベル">強ベル</OPTION>
+				<OPTION value="ハズレ">ハズレ</OPTION>
+				<OPTION value="AT,ART">AT,ART</OPTION>
+				<OPTION value="AT,ART初当り">AT,ART初当り</OPTION>
+				<OPTION value="AT,ART直撃">AT,ART直撃</OPTION>
+		</SELECT></td>
+			</tr>
 			<tr>
 				<th>設定1:</th>
-				<td>1/<INPUT type="number" size="4" name="set1" /></td>
+				<td>1/<INPUT type="number" size="4" name="set1" class="form-control"/></td>
 			</tr>
 			<tr>
 				<th>設定2:</th>
-				<td>1/<INPUT type="number" size="4" name="set2" /></td>
+				<td>1/<INPUT type="number" size="4" name="set2" class="form-control"/></td>
 			</tr>
 			<tr>
 				<th>設定3:</th>
-				<td>1/<INPUT type="number" size="4" name="set3" /></td>
+				<td>1/<INPUT type="number" size="4" name="set3" class="form-control"/></td>
 			</tr>
 			<tr>
 				<th>設定4:</th>
-				<td>1/<INPUT type="number" size="4" name="set4" /></td>
+				<td>1/<INPUT type="number" size="4" name="set4" class="form-control"/></td>
 			</tr>
 			<tr>
 				<th>設定5:</th>
-				<td>1/<INPUT type="number" size="4" name="set5" /></td>
+				<td>1/<INPUT type="number" size="4" name="set5" class="form-control"/></td>
 			</tr>
 			<tr>
 				<th>設定6:</th>
-				<td>1/<INPUT type="number" size="4" name="set6" /></td>
+				<td>1/<INPUT type="number" size="4" name="set6" class="form-control"/></td>
 			</tr>
 		</table>
-		<br /> 設定差項目2: <SELECT name="setdif2">
-			<OPTION value=""></OPTION>
-			<OPTION value="BIG">BIG</OPTION>
-			<OPTION value="REG">REG</OPTION>
-			<OPTION value="スイカ">スイカ</OPTION>
-			<OPTION value="弱チェリー">弱チェリー</OPTION>
-			<OPTION value="共通ベル">共通ベル</OPTION>
-			<OPTION value="ハズレ">ハズレ</OPTION>
-			<OPTION value="ART初当り">ART初当り</OPTION>
-			<OPTION value="ART直撃">ART直撃</OPTION>
-		</SELECT>
-		<table border="1">
+		</div>
+		<table border="1" class = "table" >
+			<tr>
+				<th>設定差項目2:</th>
+				<td><SELECT name="setdif2" class="form-control">
+				<OPTION value=""></OPTION>
+				<OPTION value="BIG">BIG</OPTION>
+				<OPTION value="REG">REG</OPTION>
+				<OPTION value="合成">合成</OPTION>
+				<OPTION value="赤7">赤7</OPTION>
+				<OPTION value="青7">青7</OPTION>
+				<OPTION value="白7">白7</OPTION>
+				<OPTION value="リプレイ">リプレイ</OPTION>
+				<OPTION value="スイカ">スイカ</OPTION>
+				<OPTION value="弱スイカ">弱スイカ</OPTION>
+				<OPTION value="強スイカ">強スイカ</OPTION>
+				<OPTION value="チェリー">チェリー</OPTION>
+				<OPTION value="弱チェリー">弱チェリー</OPTION>
+				<OPTION value="強チェリー">強チェリー</OPTION>
+				<OPTION value="中段チェリー">中段チェリー</OPTION>
+				<OPTION value="共通ベル">共通ベル</OPTION>
+				<OPTION value="強ベル">強ベル</OPTION>
+				<OPTION value="ハズレ">ハズレ</OPTION>
+				<OPTION value="AT,ART">AT,ART</OPTION>
+				<OPTION value="AT,ART初当り">AT,ART初当り</OPTION>
+				<OPTION value="AT,ART直撃">AT,ART直撃</OPTION>
+		</SELECT></td>
+			</tr>
 			<tr>
 				<th>設定1:</th>
-				<td>1/<INPUT type="number" size="4" name="set21" /></td>
+				<td>1/<INPUT type="number" size="4" name="set21" class="form-control"/></td>
 			</tr>
 			<tr>
 				<th>設定2:</th>
-				<td>1/<INPUT type="number" size="4" name="set22" /></td>
+				<td>1/<INPUT type="number" size="4" name="set22" class="form-control"/></td>
 			</tr>
 			<tr>
 				<th>設定3:</th>
-				<td>1/<INPUT type="number" size="4" name="set23" /></td>
+				<td>1/<INPUT type="number" size="4" name="set23" class="form-control"/></td>
 			</tr>
 			<tr>
 				<th>設定4:</th>
-				<td>1/<INPUT type="number" size="4" name="set24" /></td>
+				<td>1/<INPUT type="number" size="4" name="set24" class="form-control"/></td>
 			</tr>
 			<tr>
 				<th>設定5:</th>
-				<td>1/<INPUT type="number" size="4" name="set25" /></td>
+				<td>1/<INPUT type="number" size="4" name="set25" class="form-control"/></td>
 			</tr>
 			<tr>
 				<th>設定6:</th>
-				<td>1/<INPUT type="number" size="4" name="set26" /></td>
+				<td>1/<INPUT type="number" size="4" name="set26" class="form-control"/></td>
 			</tr>
 		</table>
-		<br /> 天井：
-		<td><INPUT type="number" size="4" name="ceiling" />←ない場合は入力しないで下さい</td>
-		<br /> 朝一（リセット）判定： <SELECT name="risethantei">
+		<table border="1" class = "table" >
+		<th>天井：</th>
+		<td><INPUT type="number" size="4" name="ceiling" data-toggle="tooltip" title="ない場合は入力しないでください" class="form-control"/></td>
+		<th> 朝一（リセット）判定： </th>
+		<td><SELECT name="risethantei" class="form-control">
 			<OPTION value="maru">〇</OPTION>
 			<OPTION value="sankaku">△</OPTION>
 			<OPTION value="batu">×</OPTION>
-			<br /> リセットメモ：
-			<td><INPUT type="text" size="7" name="riset" /></td>
-		</SELECT> <br /> ゾーン：
-		<td><INPUT type="text" size="7" name="zones" /></td>G <br /> ヤメ時：
-		<td><INPUT type="text" size="10" name="finish" /></td> 
+		</SELECT></td>
+		 <th> ゾーン：</th>
+		<td><INPUT type="text" size="7" name="zones" class="form-control"/></td>
+		<th>ヤメ時：</th>
+		<td><INPUT type="text" size="10" name="finish" class="form-control"/></td>
+		</table> 
 		<input type="file" name="file" size="10"/>
 		<input
 			type="submit" value="機種登録" />
@@ -159,6 +210,17 @@ input[type*="submit"] {
 	/* 透明度を20%に指定 */
 	opacity: 0.8;
 }
+.jumbotron {
+  background-image: url("../sora.jpg");
+  background-size: cover;
+  background-position: center 99%;
+}
 </style>
+<script>
+$(function () {
+	$('[data-toggle="tooltip"]').tooltip();
+});
+</script>
+</div>
 </body>
 </html>
