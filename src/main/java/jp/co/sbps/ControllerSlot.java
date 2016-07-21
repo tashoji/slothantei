@@ -54,6 +54,14 @@ public class ControllerSlot {
 		// htmlの指定
 		return "machine";
 	}
+	
+	@RequestMapping("/controller/nums")
+	public String nums(@RequestParam(required = false) Integer num, Model model) {
+		model.addAttribute("num", num);
+		System.out.println("num:"+num);
+		// htmlの指定
+		return "title";
+	}
 
 	@RequestMapping(value = "/controller/detail")
 	public String detail(@RequestParam(required = false) String macn1, Integer macid1, String zones, String riset,
@@ -208,9 +216,9 @@ public class ControllerSlot {
 		return "detail";
 	}
 
-	@RequestMapping("/controller/detail2")
-	public String detail2() {
-		return "detail2";
+	@RequestMapping("/controller/count")
+	public String count() {
+		return "count";
 	}
 
 	@RequestMapping("/controller/addMachine")
@@ -248,7 +256,7 @@ public class ControllerSlot {
 			Integer set25, Integer set26, Model model) {
 		Map<String, Object> map1 = new HashMap<String, Object>();
 		// map1.put("id", id);
-		
+//		
 		if (title == "") {
 			return "error";
 			

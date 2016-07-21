@@ -15,7 +15,7 @@
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
 </head>
-<body>
+<body style="font-family: ＭＳ Ｐ明朝">
 <div class="jumbotron">
 <div class="container">
 	<form th:action="@{/controller/hantei}" class="form-group" method="post">
@@ -48,7 +48,7 @@
 			type="hidden" th:value="${details.SETTING2_6}" name="set26" />
 			
 			<div class="row">
-			<div class="col-md-9">
+			<div class="col-md-7 col-xs-12">
 			<table border="1" align="left" class = "table" >
 				<tr>
 					<th>回転ゲーム数</th>
@@ -84,7 +84,7 @@
 		<div class="well"><td th:text="${forecast}"></td><br><td th:text="${forecast2}"></td></br></div>
 		<br clear="right" />
 			</div>
-			<div class="col-md-3" >
+			<div class="col-md-3 col-xs-9">
 			<p>
 				<input type="image" src="../PUSH.png" value="判定" width="260" height="155" />
 			</p>
@@ -120,9 +120,15 @@
 				</tr>
 			</table>
 			</div>
+			<div class="col-md-2 col-xs-3">
+			<center>
+			<th>リール配列</th>
+			</center>
+			<td th:text="'../' + ${details.ID} + '.jpg'"></td>
+			
+			<img width="170" height="440" th:src="'../' + ${details.ID} + '.jpg'"/>
 			</div>
-			 <span th:text="${total}"></span> <span th:text="${big}"></span> <span
-			th:text="${reg}"></span> 
+			</div>
 		</span>
 	</form>
 	<p>
@@ -150,9 +156,8 @@ h2::after {
 }
 
 .jumbotron {
-  background-image: url("../sora.jpg");
+  background-image: url("../bb02.jpg");
   background-size: cover;
-  background-position: center 99%;
 }
 
 input[type*="submit"] {

@@ -1,5 +1,5 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<html xmlns:th="http://www.thymeleaf.org" lang="ja" >
 <head>
 <title>すろっと</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -16,17 +16,42 @@
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous">
 </script>
+<script type="text/javascript">
+
+var count=new Object();
+count.i=0;
+count.f=function(){
+	this.i++;
+	var html=this.i;
+	document.getElementById("counter").innerHTML=html;
+}
+count.g=function(){
+	this.i--;
+	var html=this.i;
+	document.getElementById("counter").innerHTML=html;
+}
+count.j=0;
+count.a=function(){
+	this.j++;
+	var html=this.j;
+	document.getElementById("counter2").innerHTML=html;
+}
+count.b=function(){
+	this.j--;
+	var html=this.j;
+	document.getElementById("counter2").innerHTML=html;
+}
+</script>
 </head>
 <body style="font-family: ＭＳ Ｐ明朝">
-<div class="jumbotron">
-	<form th:action="@{/controller/finNewMachine}" method="post">
-		<h2>機種追加</h2>
-		<h3>機種名:
-		<input type="text" size="30" name="title" value="" class="form-control"/></h3>
-		<table border="1" class = "table" >
-			<tr>
-				<th>設定差項目1:</th>
-				<td><SELECT name="setdif1" class="form-control">
+  <div class="jumbotron">
+	<Center>
+	  <div class="container">
+		<h2>簡易こやくかうんた～</h2>
+		<div class="row">
+		<div class="col-md-6">
+		<h3>子役かうんたー1</h3><br/>
+		<td><SELECT name="setdif1" class="form-control">
 				<OPTION value=""></OPTION>
 				<OPTION value="BIG">BIG</OPTION>
 				<OPTION value="REG">REG</OPTION>
@@ -48,37 +73,13 @@
 				<OPTION value="AT,ART">AT,ART</OPTION>
 				<OPTION value="AT,ART初当り">AT,ART初当り</OPTION>
 				<OPTION value="AT,ART直撃">AT,ART直撃</OPTION>
-		</SELECT></td>
-			</tr>
-			<tr>
-				<th>設定1:</th>
-				<td>1/<INPUT type="number" size="4" name="set1" class="form-control"/></td>
-			</tr>
-			<tr>
-				<th>設定2:</th>
-				<td>1/<INPUT type="number" size="4" name="set2" class="form-control"/></td>
-			</tr>
-			<tr>
-				<th>設定3:</th>
-				<td>1/<INPUT type="number" size="4" name="set3" class="form-control"/></td>
-			</tr>
-			<tr>
-				<th>設定4:</th>
-				<td>1/<INPUT type="number" size="4" name="set4" class="form-control"/></td>
-			</tr>
-			<tr>
-				<th>設定5:</th>
-				<td>1/<INPUT type="number" size="4" name="set5" class="form-control"/></td>
-			</tr>
-			<tr>
-				<th>設定6:</th>
-				<td>1/<INPUT type="number" size="4" name="set6" class="form-control"/></td>
-			</tr>
-		</table>
-		<table border="1" class = "table" >
-			<tr>
-				<th>設定差項目2:</th>
-				<td><SELECT name="setdif2" class="form-control">
+		</SELECT></td><br/>
+		<button onclick="count.f()" class="btn btn-success btn-lg">+1</button>
+<button onclick="count.g()" class="btn btn-warning btn-lg">-1</button>
+</div>
+<div class="col-md-6">
+<h3>子役かうんたー2</h3><br/>
+		<td><SELECT name="setdif2" class="form-control">
 				<OPTION value=""></OPTION>
 				<OPTION value="BIG">BIG</OPTION>
 				<OPTION value="REG">REG</OPTION>
@@ -100,57 +101,37 @@
 				<OPTION value="AT,ART">AT,ART</OPTION>
 				<OPTION value="AT,ART初当り">AT,ART初当り</OPTION>
 				<OPTION value="AT,ART直撃">AT,ART直撃</OPTION>
-		</SELECT></td>
-			</tr>
-			<tr>
-				<th>設定1:</th>
-				<td>1/<INPUT type="number" size="4" name="set21" class="form-control"/></td>
-			</tr>
-			<tr>
-				<th>設定2:</th>
-				<td>1/<INPUT type="number" size="4" name="set22" class="form-control"/></td>
-			</tr>
-			<tr>
-				<th>設定3:</th>
-				<td>1/<INPUT type="number" size="4" name="set23" class="form-control"/></td>
-			</tr>
-			<tr>
-				<th>設定4:</th>
-				<td>1/<INPUT type="number" size="4" name="set24" class="form-control"/></td>
-			</tr>
-			<tr>
-				<th>設定5:</th>
-				<td>1/<INPUT type="number" size="4" name="set25" class="form-control"/></td>
-			</tr>
-			<tr>
-				<th>設定6:</th>
-				<td>1/<INPUT type="number" size="4" name="set26" class="form-control"/></td>
-			</tr>
-		</table>
-		<table border="1" class = "table" >
-		<th>天井：</th>
-		<td><INPUT type="number" size="4" name="ceiling" data-toggle="tooltip" title="ない場合は入力しないでください" class="form-control"/></td>
-		<th> 朝一（リセット）判定： </th>
-		<td><SELECT name="risethantei" class="form-control">
-			<OPTION value="maru">〇</OPTION>
-			<OPTION value="sankaku">△</OPTION>
-			<OPTION value="batu">×</OPTION>
-		</SELECT></td>
-		 <th> ゾーン：</th>
-		<td><INPUT type="text" size="7" name="zones" class="form-control"/></td>
-		<th>ヤメ時：</th>
-		<td><INPUT type="text" size="10" name="finish" class="form-control"/></td>
-		</table> 
-		<input type="file" name="file" size="10"/>
-		<input
-			type="submit" value="機種登録" />
-	</form>
-	<p>
-	<form action="/controller/title" method="post">
-		<input type="submit" value="戻る" />
-	</form>
-	</p>
+		</SELECT></td><br/>
+		<button onclick="count.a()" class="btn btn-success btn-lg">+1</button>
+<button onclick="count.b()" class="btn btn-warning btn-lg">-1</button>
+</div>
+</div>
+	    <form action="/controller/nums" method="post">
+	    	<div class="row">
+	    	<div class="col-md-6">
+	    	<br/>
+	    	<th>回数</th>
+		<div id="counter"><input type = "text" name = "num" value =""/></div><br />
+			</div>
+			<div class="col-md-6">
+			<br/>
+			<th>回数:</th>
+		<div id="counter2"><input type = "text" name = "num" value =""/></div><br />
+			</div>
+				</div>
+			<input type="submit" value="データ送信" />
+		</form>
+</div>
+		<p><form action="/controller/title" method="post">
+			<input type="submit" value="戻る" />
+			</form>	
+			</p>
+	</Center>
+
 	<style type="text/css">
+
+
+
 h2 {
 	position: relative;
 	padding: .25em 0 .5em .75em;
@@ -205,16 +186,13 @@ input[type*="submit"] {
 	/* 透明度を20%に指定 */
 	opacity: 0.8;
 }
+
 .jumbotron {
   background-image: url("../bb02.jpg");
   background-size: cover;
 }
 </style>
-<script>
-$(function () {
-	$('[data-toggle="tooltip"]').tooltip();
-});
-</script>
+
 </div>
 </body>
 </html>
