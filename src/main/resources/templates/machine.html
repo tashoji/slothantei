@@ -5,6 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="viewport" content="width=device-width,initial-scale=0.8"/>
 <link
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -19,6 +20,7 @@
 </head>
 <body style="font-family: ＭＳ Ｐ明朝">
   <div class="jumbotron">
+  <div class="container">
 	<Center>
 		<h2>きしゅめ～</h2>
 <!-- 	<div class="col-md-8 col-xs-8">
@@ -37,10 +39,9 @@
 </div>
 </div>
 -->
-		
 		<span th:each="machine : ${machines}">
 			<p>
-			<form action="/controller/detail" method="post">
+			<form th:action="@{/controller/detail}" action="/controller/detail" method="post">
 				<input type="submit" th:value="${machine.MACHINE_NAME}" name = "macn1"/>
 				<input type="hidden" th:value="${machine.ID}" name = "macid1" />
   			<input type="hidden" th:value="${machine.CEILING}" name = "ceiling" />
@@ -67,7 +68,7 @@
 			</p>
 		</span>
 
-		<p><form action="/controller/title" method="post">
+		<p><form th:action="@{/controller/title}" action="/controller/title" method="post">
 			<input type="submit" value="戻る" />
 			</form>	
 			</p>
@@ -87,22 +88,6 @@
 	background-repeat:no-repeat,no-repeat;
 	background-size:contain,contain;
 }*/
-
-h2 {
-	position: relative;
-	padding: .25em 0 .5em .75em;
-	border-left: 6px solid #3498db;
-}
-
-h2::after {
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	content: '';
-	width: 100%;
-	height: 0;
-	border-bottom: 1px solid #ccc;
-}
 
 input[type*="submit"] {
 	/* 文字サイズを1.4emに指定 */
@@ -148,6 +133,7 @@ input[type*="submit"] {
 
 }
 </style>
+</div>
 </div>
 </body>
 </html>

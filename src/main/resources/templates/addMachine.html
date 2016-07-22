@@ -5,6 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <link
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -19,7 +20,7 @@
 </head>
 <body style="font-family: ＭＳ Ｐ明朝">
 <div class="jumbotron">
-	<form th:action="@{/controller/finNewMachine}" method="post">
+	<form th:action="@{/controller/finNewMachine}" action="/controller/finNewMachine" method="post">
 		<h2>機種追加</h2>
 		<h3>機種名:
 		<input type="text" size="30" name="title" value="" class="form-control"/></h3>
@@ -127,26 +128,51 @@
 				<td>1/<INPUT type="number" size="4" name="set26" class="form-control"/></td>
 			</tr>
 		</table>
+		<th>機械割</th>
+		<table border="1" class = "table" >
+					<tr>
+				<th>設定1:</th>
+				<td><INPUT type="number" size="4" name="split1" class="form-control"/>.<INPUT type="number" size="1" name="split21" class="form-control"/></td>
+				<th>設定2:</th>
+				<td><INPUT type="number" size="4" name="split2" class="form-control"/>.<INPUT type="number" size="1" name="split22" class="form-control"/></td>
+</tr>
+<tr>
+			<th>設定3:</th>
+				<td><INPUT type="number" size="4" name="split3" class="form-control"/>.<INPUT type="number" size="1" name="split23" class="form-control"/></td>
+				<th>設定4:</th>
+				<td><INPUT type="number" size="4" name="split4" class="form-control"/>.<INPUT type="number" size="1" name="split24" class="form-control"/></td>
+				</tr>
+<tr>
+				<th>設定5:</th>
+				<td><INPUT type="number" size="4" name="split5" class="form-control"/>.<INPUT type="number" size="1" name="split25" class="form-control"/></td>
+				<th>設定6:</th>
+				<td><INPUT type="number" size="4" name="split6" class="form-control"/>.<INPUT type="number" size="1" name="split26" class="form-control"/></td>
+			</tr>
+		</table>
 		<table border="1" class = "table" >
 		<th>天井：</th>
 		<td><INPUT type="number" size="4" name="ceiling" data-toggle="tooltip" title="ない場合は入力しないでください" class="form-control"/></td>
 		<th> 朝一（リセット）判定： </th>
-		<td><SELECT name="risethantei" class="form-control">
-			<OPTION value="maru">〇</OPTION>
-			<OPTION value="sankaku">△</OPTION>
-			<OPTION value="batu">×</OPTION>
+		<td><SELECT name="riset" class="form-control">
+			<OPTION value="〇">〇</OPTION>
+			<OPTION value="△">△</OPTION>
+			<OPTION value="×">×</OPTION>
 		</SELECT></td>
 		 <th> ゾーン：</th>
 		<td><INPUT type="text" size="7" name="zones" class="form-control"/></td>
 		<th>ヤメ時：</th>
 		<td><INPUT type="text" size="10" name="finish" class="form-control"/></td>
 		</table> 
-		<input type="file" name="file" size="10"/>
 		<input
 			type="submit" value="機種登録" />
 	</form>
+	    <form method="post" enctype="multipart/form-data" >
+		<input type="file" name="file" size="10"/>
+      <input type="submit" value="送信" />
+
+    </form>
 	<p>
-	<form action="/controller/title" method="post">
+	<form th:action="@{/controller/title}" action="/controller/title" method="post">
 		<input type="submit" value="戻る" />
 	</form>
 	</p>

@@ -21,7 +21,7 @@
 <div class="jumbotron">
 	<Center>
 		<h2>エラーが発生しました。<br/>入力情報をご確認の上再度ご入力ください。</h2>
-		<p><form action="/controller/title" method="post">
+		<p><form th:action="@{/controller/title}" action="/controller/title"  method="post">
 			<input type="submit" value="戻る" />
 			</form>	
 		</p>
@@ -29,21 +29,6 @@
 	</Center>
 
 	<style type="text/css">
-h2 {
-	position: relative;
-	padding: .25em 0 .5em .75em;
-	border-left: 6px solid #3498db;
-}
-
-h2::after {
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	content: '';
-	width: 100%;
-	height: 0;
-	border-bottom: 1px solid #ccc;
-}
 
 input[type*="submit"] {
 	/* 文字サイズを1.4emに指定 */
@@ -84,9 +69,8 @@ input[type*="submit"] {
 	opacity: 0.8;
 }
 .jumbotron {
-  background-image: url("../sora.jpg");
+  background-image: url("../bb03.jpg");
   background-size: cover;
-  background-position: center 99%;
 }
 </style>
 </div>

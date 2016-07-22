@@ -253,7 +253,8 @@ public class ControllerSlot {
 	public String finNewMachine(@RequestParam(required = false) String title, Integer ceiling, String zones,
 			String riset, String finish, String setdif1, String setdif2, Integer set1, Integer set2, Integer set3,
 			Integer set4, Integer set5, Integer set6, Integer set21, Integer set22, Integer set23, Integer set24,
-			Integer set25, Integer set26, Model model) {
+			Integer set25, Integer set26,Integer split1,Integer split2,Integer split3,Integer split4,Integer split5,Integer split6
+			,Integer split21,Integer split22,Integer split23,Integer split24,Integer split25,Integer split26,Model model) {
 		Map<String, Object> map1 = new HashMap<String, Object>();
 		// map1.put("id", id);
 //		
@@ -283,13 +284,25 @@ public class ControllerSlot {
 		map1.put("set24", set24);
 		map1.put("set25", set25);
 		map1.put("set26", set26);
+		map1.put("split1", split1);
+		map1.put("split2", split2);
+		map1.put("split3", split3);
+		map1.put("split4", split4);
+		map1.put("split5", split5);
+		map1.put("split6", split6);
+		map1.put("split21", split21);
+		map1.put("split22", split22);
+		map1.put("split23", split23);
+		map1.put("split24", split24);
+		map1.put("split25", split25);
+		map1.put("split26", split26);
 
 		// BufferedImage img =ImageIO.read(new File(file));
 		// model.addAttribute("id",id);
 		model.addAttribute("map1", map1);
 
 		int I = jdbc.update(
-				"insert into MACHINE_TABLE (machine_name,ceiling,zones,riset,finish,set_dif1,set_dif2,setting_1,setting_2,setting_3,setting_4,setting_5,setting_6,setting2_1,setting2_2,setting2_3,setting2_4,setting2_5,setting2_6) values(:title,:ceiling,:zones,:riset,:finish,:setdif1,:setdif2,:set1,:set2,:set3,:set4,:set5,:set6,:set21,:set22,:set23,:set24,:set25,:set26)",
+				"insert into MACHINE_TABLE (machine_name,ceiling,zones,riset,finish,set_dif1,set_dif2,setting_1,setting_2,setting_3,setting_4,setting_5,setting_6,setting2_1,setting2_2,setting2_3,setting2_4,setting2_5,setting2_6,split1,split2,split3,split4,split5,split6,split21,split22,split23,split24,split25,split26) values(:title,:ceiling,:zones,:riset,:finish,:setdif1,:setdif2,:set1,:set2,:set3,:set4,:set5,:set6,:set21,:set22,:set23,:set24,:set25,:set26,:split1,:split2,:split3,:split4,:split5,:split6,:split21,:split22,:split23,:split24,:split25,:split26)",
 				map1);
 		// int I = jdbc.update("insert into MACHINE_TABLE (machine_name)
 		// values(:title)",map1);
@@ -304,7 +317,8 @@ public class ControllerSlot {
 	public String finEditMachine(@RequestParam(required = false) Integer macid2, String macn2, String namemachine,
 			Integer ceiling, String zones, String riset, String finish, String setdif1, String setdif2, Integer set1,
 			Integer set2, Integer set3, Integer set4, Integer set5, Integer set6, Integer set21, Integer set22,
-			Integer set23, Integer set24, Integer set25, Integer set26, Model model) {
+			Integer set23, Integer set24, Integer set25, Integer set26,Integer split1,Integer split2,Integer split3,Integer split4,Integer split5,Integer split6
+			,Integer split21,Integer split22,Integer split23,Integer split24,Integer split25,Integer split26, Model model) {
 		Map<String, Object> map1 = new HashMap<String, Object>();
 		map1.put("macid2", macid2);
 		map1.put("macn2", macn2);
@@ -327,12 +341,24 @@ public class ControllerSlot {
 		map1.put("set24", set24);
 		map1.put("set25", set25);
 		map1.put("set26", set26);
+		map1.put("split1", split1);
+		map1.put("split2", split2);
+		map1.put("split3", split3);
+		map1.put("split4", split4);
+		map1.put("split5", split5);
+		map1.put("split6", split6);
+		map1.put("split21", split21);
+		map1.put("split22", split22);
+		map1.put("split23", split23);
+		map1.put("split24", split24);
+		map1.put("split25", split25);
+		map1.put("split26", split26);
 		System.out.println(macn2);
 
 		model.addAttribute("map1", map1);
 
 		int J = jdbc
-				.update("update MACHINE_TABLE set(ID,machine_name,ceiling,zones,riset,finish,set_dif1,set_dif2,setting_1,setting_2,setting_3,setting_4,setting_5,setting_6,setting2_1,setting2_2,setting2_3,setting2_4,setting2_5,setting2_6) = (:macid2,:macn2,:ceiling,:zones,:riset,:finish,:setdif1,:setdif2,:set1,:set2,:set3,:set4,:set5,:set6,:set21,:set22,:set23,:set24,:set25,:set26) where ID="
+				.update("update MACHINE_TABLE set(ID,machine_name,ceiling,zones,riset,finish,set_dif1,set_dif2,setting_1,setting_2,setting_3,setting_4,setting_5,setting_6,setting2_1,setting2_2,setting2_3,setting2_4,setting2_5,setting2_6,split1,split2,split3,split4,split5,split6,split21,split22,split23,split24,split25,split26) = (:macid2,:macn2,:ceiling,:zones,:riset,:finish,:setdif1,:setdif2,:set1,:set2,:set3,:set4,:set5,:set6,:set21,:set22,:set23,:set24,:set25,:set26,:split1,:split2,:split3,:split4,:split5,:split6,:split21,:split22,:split23,:split24,:split25,:split26) where ID="
 						+ macid2, map1);
 		model.addAttribute(J);
 		// macDao.editMachine(macid2,set_dif1,namemachine,ceiling,zones,riset,finish,setdif1,setdif2,set1,set2,set3,set4,set5,set6,model);

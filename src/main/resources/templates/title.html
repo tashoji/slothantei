@@ -5,6 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <link
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -21,44 +22,30 @@
 
 <div class="jumbotron">
 	<Center>
-		<h1>	<img width="85" height="50" src="../fig_main.jpg"/>すろっと設定判別つーる
-		<img width="85" height="50" src="../fig_main.jpg"/>
+		<h1>	<img width="85" height="50" src="../fig_main.jpg"/>すろっと<img width="85" height="50" src="../fig_main.jpg"/><br/>設定判別つーる
 		</h1>
     
     
 		<style type="text/css">
-h1 {
-	position: relative;
-	padding: .25em 0 .5em .75em;
-	border-left: 6px solid #3498db;
-}
-h1::after {
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	content: '';
-	width: 100%;
-	height: 0;
-	border-bottom: 1px solid #ccc;
-}
+
 </style>
 		<p>
-		    <form action="/controller/machine" method="post">
+		    <form th:action="@{/controller/machine}" action="/controller/machine" method="post">
 			    <input type="submit" value="設定判別"/>
 			</form>
 		</p>
 		<p>
-		    <form action="/controller/addMachine" method="post">
+		    <form th:action="@{/controller/addMachine}" action="/controller/addMachine" method="post">
 			    <input type="submit" value="機種追加"/>
 			</form>
 		</p>
 		<p>
-		    <form action="/controller/selectMachine" method="post">
+		    <form th:action="@{/controller/selectMachine}" action="/controller/selectMachine" method="post">
 			    <input type="submit" value="機種データ編集"/>
 			</form>
 		</p>
 		<p>
-		    <form action="/controller/count" method="post">
+		    <form th:action="@{/controller/count}" action="/controller/count" method="post">
 			    <input type="submit" value="簡易こやくかうんた～"/>
 			</form>
 		</p>

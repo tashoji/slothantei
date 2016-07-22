@@ -5,6 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <link
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -151,6 +152,27 @@
 						th:value="${details.SETTING2_6}" class="form-control"/></td>
 				</tr>
 			</table>  
+			<th>機械割</th>
+		<table border="1" class = "table" >
+					<tr>
+				<th>設定1:</th>
+				<td><INPUT type="number" size="4" name="split1" th:value="${details.split1}" class="form-control"/>.<INPUT type="number" size="1" name="split21" th:value="${details.split21}" class="form-control"/></td>
+				<th>設定2:</th>
+				<td><INPUT type="number" size="4" name="split2" th:value="${details.split2}" class="form-control"/>.<INPUT type="number" size="1" name="split22" th:value="${details.split22}" class="form-control"/></td>
+				</tr>
+					<tr>
+			<th>設定3:</th>
+				<td><INPUT type="number" size="4" name="split3" th:value="${details.split3}" class="form-control"/>.<INPUT type="number" size="1" name="split23" th:value="${details.split23}" class="form-control"/></td>
+				<th>設定4:</th>
+				<td><INPUT type="number" size="4" name="split4" th:value="${details.split4}" class="form-control"/>.<INPUT type="number" size="1" name="split24" th:value="${details.split24}" class="form-control"/></td>
+				</tr>
+					<tr>
+				<th>設定5:</th>
+				<td><INPUT type="number" size="4" name="split5" th:value="${details.split5}" class="form-control"/>.<INPUT type="number" size="1" name="split25" th:value="${details.split25}" class="form-control"/></td>
+				<th>設定6:</th>
+				<td><INPUT type="number" size="4" name="split6" th:value="${details.split6}" class="form-control"/>.<INPUT type="number" size="1" name="split26" th:value="${details.split26}" class="form-control"/></td>
+			</tr>
+		</table>
 			<table border="1" class = "table" >
 			<th>天井：</th>
 			<td><INPUT type="number" size="2" name="ceiling"
@@ -176,7 +198,7 @@
 	</form>
 
 	<p>
-	<form action="/controller/selectMachine" method="post">
+	<form th:action="@{/controller/selectMachine}" action="/controller/selectMachine" method="post">
 		<input type="submit" value="戻る" />
 	</form>
 	</p>

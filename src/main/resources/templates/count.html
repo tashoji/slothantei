@@ -106,7 +106,7 @@ count.b=function(){
 <button onclick="count.b()" class="btn btn-warning btn-lg">-1</button>
 </div>
 </div>
-	    <form action="/controller/nums" method="post">
+	    <form th:action="@{/controller/nums}" action="/controller/nums" method="post">
 	    	<div class="row">
 	    	<div class="col-md-6">
 	    	<br/>
@@ -122,7 +122,7 @@ count.b=function(){
 			<input type="submit" value="データ送信" />
 		</form>
 </div>
-		<p><form action="/controller/title" method="post">
+		<p><form th:action="@{/controller/title}" action="/controller/title" method="post">
 			<input type="submit" value="戻る" />
 			</form>	
 			</p>
