@@ -5,6 +5,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 <meta http-equiv="Content-Style-Type" content="text/css" />
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <link
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -15,7 +16,7 @@
 	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
 	crossorigin="anonymous"></script>
 </head>
-<body style="font-family: ＭＳ Ｐ明朝">
+<body style="font-family: HG正楷書体-PRO">
 <div class="jumbotron">
 <div class="container">
 	<form th:action="@{/controller/hantei}" class="form-group" method="post">
@@ -84,9 +85,9 @@
 		<div class="well"><td th:text="${forecast}"></td><br><td th:text="${forecast2}"></td></br></div>
 		<br clear="right" />
 			</div>
-			<div class="col-md-3 col-xs-9">
+			<div class="col-md-3 col-xs-7">
 			<p>
-				<input type="image" src="../PUSH.png" value="判定" width="260" height="155" />
+				<input type="image" src="../PUSH.png" value="判定" class="img-responsive"/>
 			</p>
 			<br/>
 			<table border="1" class = "table">
@@ -120,13 +121,13 @@
 				</tr>
 			</table>
 			</div>
-			<div class="col-md-2 col-xs-3">
+			<div class="col-md-2 col-xs-5">
 			<center>
 			<th>リール配列</th>
 			</center>
 			<td th:text="'../' + ${details.ID} + '.jpg'"></td>
 			
-			<img width="170" height="440" th:src="'../' + ${details.ID} + '.jpg'"/>
+			<img th:src="'../' + ${details.ID} + '.jpg'" class="img-responsive"/>
 			</div>
 			</div>
 		</span>
