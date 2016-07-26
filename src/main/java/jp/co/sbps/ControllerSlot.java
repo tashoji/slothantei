@@ -1,32 +1,22 @@
 package jp.co.sbps;
 
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import javax.imageio.ImageIO;
-
-import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import jp.co.sbps.entity.MachineTable;
+
 @Controller
 public class ControllerSlot {
-	@Autowired
-	private NamedParameterJdbcTemplate jdbc;
-
-	@Autowired
-	private JdbcTemplate jdbcn;
 
 	@Autowired
 	private MachineTableDao macDao;
-
+	
 	@RequestMapping("/controller/title")
 	public String title(String namemachine, Model model) {
 		return "title";
@@ -34,27 +24,23 @@ public class ControllerSlot {
 
 	@RequestMapping("/controller/selectMachine")
 	public String selectMachine(Model model) {
-		List<Map<String, Object>> selectMachine = macDao.selectAll();
+		List<MachineTable> selectMachine = macDao.selectAll();
 		model.addAttribute("selectMachine", selectMachine);
 		return "selectMachine";
 	}
 	
 	@RequestMapping("/controller/machine")
 	public String machine(@RequestParam(required = false) Integer id, String name, Model model) {
-		List<Map<String, Object>> machine = macDao.selectAll();
+		List<MachineTable> machine = macDao.selectAll();
 		model.addAttribute("id", id);
 		model.addAttribute("machines", machine);
-		System.out.println(id);
 		System.out.println(machine);
-		// htmlの指定
 		return "machine";
 	}
 	
 	@RequestMapping("/controller/nums")
 	public String nums(@RequestParam(required = false) Integer num, Model model) {
 		model.addAttribute("num", num);
-		System.out.println("num:"+num);
-		// htmlの指定
 		return "title";
 	}
 
@@ -63,7 +49,11 @@ public class ControllerSlot {
 			String finish, String setdif1, String setdif2, Integer ceiling, Integer hantei1, Integer hantei2,
 			Integer hantei3, Integer set1, Integer set2, Integer set3, Integer set4, Integer set5, Integer set6,
 			Integer set21, Integer set22, Integer set23, Integer set24, Integer set25, Integer set26, Model model) {
-		List<Map<String, Object>> detail = macDao.selectID(macid1);
+		System.out.println(set1);
+		System.out.println(set2);
+		System.out.println(set3);
+		
+		MachineTable detail = macDao.selectID(macid1);
 		model.addAttribute("detail", detail);
 		model.addAttribute("ceiling", ceiling);
 		model.addAttribute("macn1", macn1);
@@ -94,9 +84,7 @@ public class ControllerSlot {
 			String finish, String setdif1, String setdif2, Integer ceiling, Integer hantei1, Integer hantei2,
 			Integer hantei3, Integer set1, Integer set2, Integer set3, Integer set4, Integer set5, Integer set6,
 			Integer set21, Integer set22, Integer set23, Integer set24, Integer set25, Integer set26, Model model) {
-		// List<Map<String, Object>>detail = jdbcn.queryForList("select * from
-		// MACHINE_TABLE");
-		List<Map<String, Object>> detail =  macDao.selectID(macid1);
+		MachineTable detail =  macDao.selectID(macid1);
 
 		// 設定判別とその説明下
 		// hantei1(回転ゲーム数)÷hantei2（子役数）= kakusa1(子役確率)
@@ -106,6 +94,9 @@ public class ControllerSlot {
 		// kakusa1がkakuritu1より大きければ設定1
 		// （set2(設定2の子役確率)＋set3(設定3の子役確率)）÷２ = kakuritu2
 		// kakusa1がkakuritu1より小さく、kakuritu2より大きければ設定2
+		System.out.println(hantei1);
+		System.out.println(set1);
+		System.out.println(set2);
 
 		int kakusa1;
 		int kakusa2;
@@ -136,7 +127,7 @@ public class ControllerSlot {
 		kakuritu24 = (set24 + set25) / 2;
 		kakuritu25 = (set25 + set26) / 2;
 		System.out.println(kakusa2);
-		System.out.println(kakuritu22);
+		System.out.println(hantei1);
 
 		if (kakusa1 >= kakuritu1) {
 			forecast = "1: " + setdif1 + "確率は「設定1」の近似値またはそれ以下です。";
@@ -165,13 +156,6 @@ public class ControllerSlot {
 		} else {
 			forecast2 = "2: " + setdif2 + "確率は「設定6」の近似値またはそれ以上です。";
 		}
-
-		System.out.println("hantei1:" + hantei1);
-		System.out.println("hantei2:" + hantei2);
-		System.out.println("hantei3:" + hantei3);
-		System.out.println("kakusa1:" + kakusa1);
-		System.out.println("kakuritu1:" + kakuritu1);
-
 		model.addAttribute("hantei1", hantei1);
 		model.addAttribute("hantei2", hantei2);
 		model.addAttribute("hantei3", hantei3);
@@ -198,9 +182,6 @@ public class ControllerSlot {
 		model.addAttribute("set26", set26);
 		model.addAttribute("forecast", forecast);
 		model.addAttribute("forecast2", forecast2);
-		System.out.println("macid11:" + macid1);
-		System.out.println("macn11:" + macn1);
-		System.out.println("detail1:" + detail);
 		return "detail";
 	}
 
@@ -216,9 +197,7 @@ public class ControllerSlot {
 
 	@RequestMapping("/controller/editMachine")
 	public String editMachine(@RequestParam(required = false) Integer macid , Model model) {
-		Map<String, Object> detail = macDao.editID(macid);
-		System.out.println("detail:"+detail);
-		
+		MachineTable detail = macDao.editID(macid);
 		model.addAttribute("detail", detail);
 		model.addAttribute("macid", macid);
 		return "editMachine";
@@ -274,7 +253,8 @@ public class ControllerSlot {
 		map1.put("split24", split24);
 		map1.put("split25", split25);
 		map1.put("split26", split26);
-
+		
+		
 		model.addAttribute("map1", map1);
 
 				macDao.insert(map1);	
@@ -323,13 +303,14 @@ public class ControllerSlot {
 		map1.put("split26", split26);
 
 		model.addAttribute("map1", map1);
+		
 		macDao.update(map1);
 		return "finEditMachine";
 	}
 
 	@RequestMapping("/controller/finDeleteMachine")
 	public String finDeleteMachine(@RequestParam(required = false) Integer ID, String namemachine, Model model) {
-		List<Map<String, Object>> finDeleteMachine = macDao.selectAll();
+		List<MachineTable> finDeleteMachine = macDao.selectAll();
 		model.addAttribute("namemachine", finDeleteMachine);
 		macDao.deleteMachine(namemachine);
 		return "finDeleteMachine";

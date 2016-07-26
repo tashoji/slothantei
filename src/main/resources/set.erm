@@ -12,7 +12,7 @@
 	<category_index>0</category_index>
 	<zoom>1.0</zoom>
 	<x>0</x>
-	<y>48</y>
+	<y>0</y>
 	<default_color>
 		<r>128</r>
 		<g>128</g>
@@ -138,7 +138,7 @@
 			</connections>
 			<display>false</display>
 			<creation_date>2016-07-04 16:24:31</creation_date>
-			<updated_date>2016-07-25 11:35:52</updated_date>
+			<updated_date>2016-07-26 14:57:53</updated_date>
 			<model_property>
 				<name>プロジェクト名</name>
 				<value></value>
@@ -690,12 +690,12 @@
 	<contents>
 		<table>
 			<id>0</id>
-			<height>382</height>
-			<width>238</width>
+			<height>814</height>
+			<width>253</width>
 				<font_name>メイリオ</font_name>
 				<font_size>9</font_size>
 			<x>84</x>
-			<y>12</y>
+			<y>24</y>
 			<color>
 				<r>128</r>
 				<g>128</g>
@@ -876,7 +876,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>1</word_id>
+					<word_id>17</word_id>
 					<id>5</id>
 					<description></description>
 					<unique_key_name></unique_key_name>
@@ -909,7 +909,7 @@
 					</sequence>
 				</normal_column>
 				<normal_column>
-					<word_id>17</word_id>
+					<word_id>1</word_id>
 					<id>6</id>
 					<description></description>
 					<unique_key_name></unique_key_name>

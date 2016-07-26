@@ -27,26 +27,26 @@
 	</div>
 		<span th:each="details : ${detail}"> 
 		<input type="hidden"
-			th:value="${details.ID}" name="macid1" /> <input type="hidden"
-			th:value="${details.MACHINE_NAME}" name="macn1" /><input type="hidden"
-			th:value="${details.ZONES}" name="zones" /> <input type="hidden"
-			th:value="${details.RISET}" name="riset" /> <input type="hidden"
-			th:value="${details.FINISH}" name="finish" /> <input type="hidden"
-			th:value="${details.SET_DIF1}" name="setdif1" /> <input
-			type="hidden" th:value="${details.SET_DIF2}" name="setdif2" /> <input
-			type="hidden" th:value="${details.SETTING_1}" name="set1" /> <input
-			type="hidden" th:value="${details.SETTING_2}" name="set2" /> <input
-			type="hidden" th:value="${details.SETTING_3}" name="set3" /> <input
-			type="hidden" th:value="${details.SETTING_4}" name="set4" /> <input
-			type="hidden" th:value="${details.SETTING_5}" name="set5" /> <input
-			type="hidden" th:value="${details.SETTING_6}" name="set6" />
+			th:value="${details.id}" name="macid1" /> <input type="hidden"
+			th:value="${details.machineName}" name="macn1" /><input type="hidden"
+			th:value="${details.zones}" name="zones" /> <input type="hidden"
+			th:value="${details.riset}" name="riset" /> <input type="hidden"
+			th:value="${details.finish}" name="finish" /> <input type="hidden"
+			th:value="${details.setDif1}" name="setdif1" /> <input
+			type="hidden" th:value="${details.setDif2}" name="setdif2" /> <input
+			type="hidden" th:value="${details.setting_1}" name="set1" /> <input
+			type="hidden" th:value="${details.setting_2}" name="set2" /> <input
+			type="hidden" th:value="${details.setting_3}" name="set3" /> <input
+			type="hidden" th:value="${details.setting_4}" name="set4" /> <input
+			type="hidden" th:value="${details.setting_5}" name="set5" /> <input
+			type="hidden" th:value="${details.setting_6}" name="set6" />
 			<input
-			type="hidden" th:value="${details.SETTING2_1}" name="set21" /> <input
-			type="hidden" th:value="${details.SETTING2_2}" name="set22" /> <input
-			type="hidden" th:value="${details.SETTING2_3}" name="set23" /> <input
-			type="hidden" th:value="${details.SETTING2_4}" name="set24" /> <input
-			type="hidden" th:value="${details.SETTING2_5}" name="set25" /> <input
-			type="hidden" th:value="${details.SETTING2_6}" name="set26" />
+			type="hidden" th:value="${details.setting2_1}" name="set21" /> <input
+			type="hidden" th:value="${details.setting2_2}" name="set22" /> <input
+			type="hidden" th:value="${details.setting2_3}" name="set23" /> <input
+			type="hidden" th:value="${details.setting2_4}" name="set24" /> <input
+			type="hidden" th:value="${details.setting2_5}" name="set25" /> <input
+			type="hidden" th:value="${details.setting2_6}" name="set26" />
 			
 			<div class="row">
 			<div class="col-md-7 col-xs-12">
@@ -56,11 +56,11 @@
 					<td><INPUT type="number" size="5" name="hantei1" th:value ="${hantei1}" class="form-control" /></td>
 				</tr>
 				<tr>
-					<td th:text="${details.SET_DIF1}"></td>
+					<td th:text="${details.setDif1}"></td>
 					<td><INPUT type="number" size="5" name="hantei2" th:value ="${hantei2}" class="form-control" /></td>
 				</tr>
 				<tr>
-					<td th:text="${details.SET_DIF2}"></td>
+					<td th:text="${details.setDif2}"></td>
 					<td><INPUT type="number" size="5" name="hantei3" th:value ="${hantei3}" class="form-control" /></td>
 				</tr>
 			</table>
@@ -125,9 +125,9 @@
 			<center>
 			<th>リール配列</th>
 			</center>
-			<td th:text="'../' + ${details.ID} + '.jpg'"></td>
+			<td th:text="'../' + ${details.id} + '.jpg'"></td>
 			
-			<img th:src="'../' + ${details.ID} + '.jpg'" class="img-responsive"/>
+			<img th:src="'../' + ${details.id} + '.jpg'" class="img-responsive"/>
 			</div>
 			</div>
 		</span>

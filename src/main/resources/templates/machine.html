@@ -42,26 +42,26 @@
 		<span th:each="machine : ${machines}">
 			<p>
 			<form th:action="@{/controller/detail}" action="/controller/detail" method="post">
-				<input type="submit" th:value="${machine.MACHINE_NAME}" name = "macn1"/>
-				<input type="hidden" th:value="${machine.ID}" name = "macid1" />
-  			<input type="hidden" th:value="${machine.CEILING}" name = "ceiling" />
-<input type="hidden" th:value="${machine.ZONES}" name = "zones" />
-<input type="hidden" th:value="${machine.RISET}" name = "riset" />
-<input type="hidden" th:value="${machine.FINISH}" name = "finish" />
-<input type="hidden" th:value="${machine.SET_DIF1}" name = "setdif1" />
-<input type="hidden" th:value="${machine.SET_DIF2}" name = "setdif2" />
-<input type="hidden" th:value="${machine.SETTING_1}" name = "set1" />
-<input type="hidden" th:value="${machine.SETTING_2}" name = "set2" />
-<input type="hidden" th:value="${machine.SETTING_3}" name = "set3" />
-<input type="hidden" th:value="${machine.SETTING_4}" name = "set4" />
-<input type="hidden" th:value="${machine.SETTING_5}" name = "set5" />
-<input type="hidden" th:value="${machine.SETTING_6}" name = "set6" />	
-<input type="hidden" th:value="${machine.SETTING2_1}" name = "set1" />
-<input type="hidden" th:value="${machine.SETTING2_2}" name = "set2" />
-<input type="hidden" th:value="${machine.SETTING2_3}" name = "set3" />
-<input type="hidden" th:value="${machine.SETTING2_4}" name = "set4" />
-<input type="hidden" th:value="${machine.SETTING2_5}" name = "set5" />
-<input type="hidden" th:value="${machine.SETTING2_6}" name = "set6" />
+				<input type="submit" th:value="${machine.machineName}" name = "macn1"/>
+				<input type="hidden" th:value="${machine.id}" name = "macid1" />
+  			<input type="hidden" th:value="${machine.ceiling}" name = "ceiling" />
+<input type="hidden" th:value="${machine.zones}" name = "zones" />
+<input type="hidden" th:value="${machine.riset}" name = "riset" />
+<input type="hidden" th:value="${machine.finish}" name = "finish" />
+<input type="hidden" th:value="${machine.setDif1}" name = "setdif1" />
+<input type="hidden" th:value="${machine.setDif2}" name = "setdif2" />
+<input type="hidden" th:value="${machine.setting_1}" name = "set1" />
+<input type="hidden" th:value="${machine.setting_2}" name = "set2" />
+<input type="hidden" th:value="${machine.setting_3}" name = "set3" />
+<input type="hidden" th:value="${machine.setting_4}" name = "set4" />
+<input type="hidden" th:value="${machine.setting_5}" name = "set5" />
+<input type="hidden" th:value="${machine.setting_6}" name = "set6" />	
+<input type="hidden" th:value="${machine.setting2_1}" name = "set1" />
+<input type="hidden" th:value="${machine.setting2_2}" name = "set2" />
+<input type="hidden" th:value="${machine.setting2_3}" name = "set3" />
+<input type="hidden" th:value="${machine.setting2_4}" name = "set4" />
+<input type="hidden" th:value="${machine.setting2_5}" name = "set5" />
+<input type="hidden" th:value="${machine.setting2_6}" name = "set6" />
 
 
 </form>

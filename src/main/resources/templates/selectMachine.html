@@ -28,7 +28,7 @@
 		
 		<SELECT name="macid" class="form-control">
 			<span th:each="select : ${selectMachine}" th:remove="tag">
-				<OPTION th:text="${select.MACHINE_NAME}" th:value="${select.ID}" ></OPTION> 
+				<OPTION th:text="${select.machineName}" th:value="${select.id}" ></OPTION> 
 			</span>
 		</SELECT>
 
@@ -42,7 +42,7 @@
 		<h2>機種データ削除</h2>
 		<br /> 機種名: <SELECT name="namemachine" class="form-control">
 			<span th:each="select : ${selectMachine}">
-				<OPTION th:text="${select.MACHINE_NAME}"></OPTION>
+				<OPTION th:text="${select.machineName}"></OPTION>
 		</span>
 		</SELECT> 
 		<p>
