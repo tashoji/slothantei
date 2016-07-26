@@ -23,17 +23,17 @@
 	<form th:action="@{/controller/finEditMachine}" method="post">
 		<h2>機種データ編集</h2>
 		<h3>機種名:
-		<td th:text="${namemachine}" name="nacn2"></td> </h3>
-		<span th:each="details : ${detail}"> <input type="hidden"
-			th:value="${details.MACHINE_NAME}" name="macn2" /> <input
-			type="hidden" th:value="${details.ID}" name="macid2" />
+		<td th:text="${detail.MACHINE_NAME}"></td></h3>
+		 <input type="hidden"
+			th:value="${detail.MACHINE_NAME}" name="macn2" /> 
+			<input
+			type="hidden" th:value="${detail.ID}" name="macid2" />
 			<table border="1" class = "table" >
 				<tr>
 					<th>設定差項目1:</th>
-					<td>		<SELECT name="setdif1" class="form-control">
-			<span th:each="details : ${detail}">
-				<OPTION th:text="${details.SET_DIF1}"></OPTION> <!--	<OPTION th:value ="${setdif1}"></OPTION> -->
-		</span>
+					<td>		
+				<SELECT name="setdif1" class="form-control">
+				<OPTION th:text="${detail.SET_DIF1}"></OPTION> <!--	<OPTION th:value ="${setdif1}"></OPTION> -->
 				<OPTION value=""></OPTION>
 				<OPTION value="BIG">BIG</OPTION>
 				<OPTION value="REG">REG</OPTION>
@@ -55,47 +55,46 @@
 				<OPTION value="AT,ART">AT,ART</OPTION>
 				<OPTION value="AT,ART初当り">AT,ART初当り</OPTION>
 				<OPTION value="AT,ART直撃">AT,ART直撃</OPTION>
-		</SELECT></td>
+				</SELECT></td>
 				</tr>
 			
 				<tr>
 					<th>設定1:</th>
 					<td>1/ <INPUT type="number" size="5" name="set1"
-						th:value="${details.SETTING_1}" class="form-control"/></td>
+						th:value="${detail.SETTING_1}" class="form-control"/></td>
 				</tr>
 				<tr>
 					<th>設定2:</th>
 					<td>1/<INPUT type="number" size="5" name="set2"
-						th:value="${details.SETTING_2}" class="form-control"/></td>
+						th:value="${detail.SETTING_2}" class="form-control"/></td>
 				</tr>
 				<tr>
 					<th>設定3:</th>
 					<td>1/<INPUT type="number" size="5" name="set3"
-						th:value="${details.SETTING_3}" class="form-control"/></td>
+						th:value="${detail.SETTING_3}" class="form-control"/></td>
 				</tr>
 				<tr>
 					<th>設定4:</th>
 					<td>1/<INPUT type="number" size="5" name="set4"
-						th:value="${details.SETTING_4}" class="form-control"/></td>
+						th:value="${detail.SETTING_4}" class="form-control"/></td>
 				</tr>
 				<tr>
 					<th>設定5:</th>
 					<td>1/<INPUT type="number" size="5" name="set5"
-						th:value="${details.SETTING_5}" class="form-control"/></td>
+						th:value="${detail.SETTING_5}" class="form-control"/></td>
 				</tr>
 				<tr>
 					<th>設定6:</th>
 					<td>1/<INPUT type="number" size="5" name="set6"
-						th:value="${details.SETTING_6}" class="form-control"/></td>
+						th:value="${detail.SETTING_6}" class="form-control"/></td>
 				</tr>
 			</table> 
 			<table border="1" class = "table" >
 				<tr>
 					<th>設定差項目2:</th>
-					<td><SELECT name="setdif2" class="form-control">
-				<span th:each="details : ${detail}">
-					<OPTION th:text="${details.SET_DIF2}"></OPTION> <!--	<OPTION th:value ="${setdif1}"></OPTION> -->
-			</span>
+					<td>
+				<SELECT name="setdif2" class="form-control">
+				<OPTION th:text="${detail.SET_DIF2}"></OPTION> <!--	<OPTION th:value ="${setdif1}"></OPTION> -->
 				<OPTION value=""></OPTION>
 				<OPTION value="BIG">BIG</OPTION>
 				<OPTION value="REG">REG</OPTION>
@@ -119,64 +118,64 @@
 				<OPTION value="AT,ART直撃">AT,ART直撃</OPTION>
 				
 				<OPTION value="CZ">CZ</OPTION>
-		</SELECT></td>
+				</SELECT></td>
 				</tr>
 				<tr>
 					<th>設定1:</th>
 					<td>1/<INPUT type="number" size="5" name="set21"
-						th:value="${details.SETTING2_1}" class="form-control"/></td>
+						th:value="${detail.SETTING2_1}" class="form-control"/></td>
 				</tr>
 				<tr>
 					<th>設定2:</th>
 					<td>1/<INPUT type="number" size="5" name="set22"
-						th:value="${details.SETTING2_2}" class="form-control"/></td>
+						th:value="${detail.SETTING2_2}" class="form-control"/></td>
 				</tr>
 				<tr>
 					<th>設定3:</th>
 					<td>1/<INPUT type="number" size="5" name="set23"
-						th:value="${details.SETTING2_3}" class="form-control"/></td>
+						th:value="${detail.SETTING2_3}" class="form-control"/></td>
 				</tr>
 				<tr>
 					<th>設定4:</th>
 					<td>1/<INPUT type="number" size="5" name="set24"
-						th:value="${details.SETTING2_4}" class="form-control"/></td>
+						th:value="${detail.SETTING2_4}" class="form-control"/></td>
 				</tr>
 				<tr>
 					<th>設定5:</th>
 					<td>1/<INPUT type="number" size="5" name="set25"
-						th:value="${details.SETTING2_5}" class="form-control"/></td>
+						th:value="${detail.SETTING2_5}" class="form-control"/></td>
 				</tr>
 				<tr>
 					<th>設定6:</th>
 					<td>1/<INPUT type="number" size="5" name="set26"
-						th:value="${details.SETTING2_6}" class="form-control"/></td>
+						th:value="${detail.SETTING2_6}" class="form-control"/></td>
 				</tr>
 			</table>  
 			<th>機械割</th>
 		<table border="1" class = "table" >
 					<tr>
 				<th>設定1:</th>
-				<td><INPUT type="number" size="4" name="split1" th:value="${details.split1}" class="form-control"/>.<INPUT type="number" size="1" name="split21" th:value="${details.split21}" class="form-control"/></td>
+				<td><INPUT type="number" size="4" name="split1" th:value="${detail.split1}" class="form-control"/>.<INPUT type="number" size="1" name="split21" th:value="${detail.split21}" class="form-control"/></td>
 				<th>設定2:</th>
-				<td><INPUT type="number" size="4" name="split2" th:value="${details.split2}" class="form-control"/>.<INPUT type="number" size="1" name="split22" th:value="${details.split22}" class="form-control"/></td>
+				<td><INPUT type="number" size="4" name="split2" th:value="${detail.split2}" class="form-control"/>.<INPUT type="number" size="1" name="split22" th:value="${detail.split22}" class="form-control"/></td>
 				</tr>
 					<tr>
 			<th>設定3:</th>
-				<td><INPUT type="number" size="4" name="split3" th:value="${details.split3}" class="form-control"/>.<INPUT type="number" size="1" name="split23" th:value="${details.split23}" class="form-control"/></td>
+				<td><INPUT type="number" size="4" name="split3" th:value="${detail.split3}" class="form-control"/>.<INPUT type="number" size="1" name="split23" th:value="${detail.split23}" class="form-control"/></td>
 				<th>設定4:</th>
-				<td><INPUT type="number" size="4" name="split4" th:value="${details.split4}" class="form-control"/>.<INPUT type="number" size="1" name="split24" th:value="${details.split24}" class="form-control"/></td>
+				<td><INPUT type="number" size="4" name="split4" th:value="${detail.split4}" class="form-control"/>.<INPUT type="number" size="1" name="split24" th:value="${detail.split24}" class="form-control"/></td>
 				</tr>
 					<tr>
 				<th>設定5:</th>
-				<td><INPUT type="number" size="4" name="split5" th:value="${details.split5}" class="form-control"/>.<INPUT type="number" size="1" name="split25" th:value="${details.split25}" class="form-control"/></td>
+				<td><INPUT type="number" size="4" name="split5" th:value="${detail.split5}" class="form-control"/>.<INPUT type="number" size="1" name="split25" th:value="${detail.split25}" class="form-control"/></td>
 				<th>設定6:</th>
-				<td><INPUT type="number" size="4" name="split6" th:value="${details.split6}" class="form-control"/>.<INPUT type="number" size="1" name="split26" th:value="${details.split26}" class="form-control"/></td>
+				<td><INPUT type="number" size="4" name="split6" th:value="${detail.split6}" class="form-control"/>.<INPUT type="number" size="1" name="split26" th:value="${detail.split26}" class="form-control"/></td>
 			</tr>
 		</table>
 			<table border="1" class = "table" >
 			<th>天井：</th>
 			<td><INPUT type="number" size="2" name="ceiling"
-				th:value="${details.CEILING}" class="form-control"/></td> 
+				th:value="${detail.CEILING}" class="form-control"/></td> 
 				<th> 朝一（リセット）判定：</th>
 				 <td><SELECT name="riset" class="form-control">
 				<OPTION value="〇">〇</OPTION>
@@ -185,16 +184,15 @@
 				</SELECT></td> 
 				<th>ゾーン：</th>
 			<td><INPUT type="text" size="7" name="zones"
-				th:value="${details.ZONES}" class="form-control"/></td>
+				th:value="${detail.ZONES}" class="form-control"/></td>
 				<th> ヤメ時：</th>
 			<td><INPUT type="text" size="10" name="finish"
-				th:value="${details.FINISH}" class="form-control"/></td>
+				th:value="${detail.FINISH}" class="form-control"/></td>
 		</table>
 
 			<p>
 				<input type="submit" value="更新" />
 			</p>
-		</span>
 	</form>
 
 	<p>

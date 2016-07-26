@@ -24,11 +24,14 @@
 <div class="col-md-6">
 	<form th:action="@{/controller/editMachine}" method="post">
 		<h2>機種データ編集</h2>
-		<br /> 機種名: <SELECT name="namemachine" class="form-control">
-			<span th:each="select : ${selectMachine}">
-				<OPTION th:text="${select.MACHINE_NAME}" name="macn3"></OPTION> 
-		</span>
-		</SELECT> 
+		<br /> 機種名:
+		
+		<SELECT name="macid" class="form-control">
+			<span th:each="select : ${selectMachine}" th:remove="tag">
+				<OPTION th:text="${select.MACHINE_NAME}" th:value="${select.ID}" ></OPTION> 
+			</span>
+		</SELECT>
+
 		<p>
 			<input type="submit" value="変更" />
 		</p>

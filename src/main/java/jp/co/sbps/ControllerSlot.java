@@ -27,23 +27,18 @@ public class ControllerSlot {
 	@Autowired
 	private MachineTableDao macDao;
 
-	// URLの名前
 	@RequestMapping("/controller/title")
 	public String title(String namemachine, Model model) {
 		return "title";
 	}
 
-	// URLの名前
 	@RequestMapping("/controller/selectMachine")
-	public String selectMachine(@RequestParam(required = false) String macn1, Integer macid1, String name,
-			Model model) {
+	public String selectMachine(Model model) {
 		List<Map<String, Object>> selectMachine = macDao.selectAll();
 		model.addAttribute("selectMachine", selectMachine);
-		model.addAttribute("macn1", macn1);
-		model.addAttribute("macid1", macid1);
 		return "selectMachine";
 	}
-
+	
 	@RequestMapping("/controller/machine")
 	public String machine(@RequestParam(required = false) Integer id, String name, Model model) {
 		List<Map<String, Object>> machine = macDao.selectAll();
@@ -68,7 +63,7 @@ public class ControllerSlot {
 			String finish, String setdif1, String setdif2, Integer ceiling, Integer hantei1, Integer hantei2,
 			Integer hantei3, Integer set1, Integer set2, Integer set3, Integer set4, Integer set5, Integer set6,
 			Integer set21, Integer set22, Integer set23, Integer set24, Integer set25, Integer set26, Model model) {
-		List<Map<String, Object>> detail = jdbcn.queryForList("select * from MACHINE_TABLE where ID =?", macid1);
+		List<Map<String, Object>> detail = macDao.selectID(macid1);
 		model.addAttribute("detail", detail);
 		model.addAttribute("ceiling", ceiling);
 		model.addAttribute("macn1", macn1);
@@ -90,10 +85,6 @@ public class ControllerSlot {
 		model.addAttribute("set24", set24);
 		model.addAttribute("set25", set25);
 		model.addAttribute("set26", set26);
-		System.out.println("detail:" + detail);
-		System.out.println("hantei11:" + hantei1);
-		System.out.println("macid1:" + macid1);
-		System.out.println("macn1:" + macn1);
 
 		return "detail";
 	}
@@ -105,7 +96,7 @@ public class ControllerSlot {
 			Integer set21, Integer set22, Integer set23, Integer set24, Integer set25, Integer set26, Model model) {
 		// List<Map<String, Object>>detail = jdbcn.queryForList("select * from
 		// MACHINE_TABLE");
-		List<Map<String, Object>> detail = jdbcn.queryForList("select * from MACHINE_TABLE where ID =?", macid1);
+		List<Map<String, Object>> detail =  macDao.selectID(macid1);
 
 		// 設定判別とその説明下
 		// hantei1(回転ゲーム数)÷hantei2（子役数）= kakusa1(子役確率)
@@ -175,9 +166,6 @@ public class ControllerSlot {
 			forecast2 = "2: " + setdif2 + "確率は「設定6」の近似値またはそれ以上です。";
 		}
 
-		// 設定判別とその説明上
-		// hantei1,hantei2、set1~6など情報が取れている必要あり
-
 		System.out.println("hantei1:" + hantei1);
 		System.out.println("hantei2:" + hantei2);
 		System.out.println("hantei3:" + hantei3);
@@ -227,20 +215,12 @@ public class ControllerSlot {
 	}
 
 	@RequestMapping("/controller/editMachine")
-	public String editMachine(@RequestParam(required = false) String macn3, Integer macid1, String namemachine,
-			Integer setting1, Model model) {
-		// List<Map<String, Object>> editMachine = macDao.selectAll();
-		// model.addAttribute("editMachine", editMachine);
-		List<Map<String, Object>> detail = jdbcn.queryForList("select * from MACHINE_TABLE where MACHINE_NAME =?",
-				namemachine);
-		// model.addAttribute("setting1", setting1);
-		model.addAttribute("namemachine", namemachine);
-		model.addAttribute("macid1", macid1);
-		model.addAttribute("macn1", macn3);
+	public String editMachine(@RequestParam(required = false) Integer macid , Model model) {
+		Map<String, Object> detail = macDao.editID(macid);
+		System.out.println("detail:"+detail);
+		
 		model.addAttribute("detail", detail);
-		System.out.println("a" + namemachine);
-		System.out.println(macn3);
-		System.out.println(detail);
+		model.addAttribute("macid", macid);
 		return "editMachine";
 	}
 	
@@ -257,14 +237,12 @@ public class ControllerSlot {
 			,Integer split21,Integer split22,Integer split23,Integer split24,Integer split25,Integer split26,Model model) {
 		Map<String, Object> map1 = new HashMap<String, Object>();
 		// map1.put("id", id);
-//		
+		
 		if (title == "") {
 			return "error";
 			
 		}else{
-			
-		
-		
+				
 		map1.put("title", title);
 		map1.put("ceiling", ceiling);
 		map1.put("zones", zones);
@@ -297,19 +275,10 @@ public class ControllerSlot {
 		map1.put("split25", split25);
 		map1.put("split26", split26);
 
-		// BufferedImage img =ImageIO.read(new File(file));
-		// model.addAttribute("id",id);
 		model.addAttribute("map1", map1);
 
-		int I = jdbc.update(
-				"insert into MACHINE_TABLE (machine_name,ceiling,zones,riset,finish,set_dif1,set_dif2,setting_1,setting_2,setting_3,setting_4,setting_5,setting_6,setting2_1,setting2_2,setting2_3,setting2_4,setting2_5,setting2_6,split1,split2,split3,split4,split5,split6,split21,split22,split23,split24,split25,split26) values(:title,:ceiling,:zones,:riset,:finish,:setdif1,:setdif2,:set1,:set2,:set3,:set4,:set5,:set6,:set21,:set22,:set23,:set24,:set25,:set26,:split1,:split2,:split3,:split4,:split5,:split6,:split21,:split22,:split23,:split24,:split25,:split26)",
-				map1);
-		// int I = jdbc.update("insert into MACHINE_TABLE (machine_name)
-		// values(:title)",map1);
-		model.addAttribute(I);
-		// htmlの指定
-		return "finNewMachine";
-		
+				macDao.insert(map1);	
+				return "finNewMachine";
 		}
 	}
 
@@ -320,9 +289,8 @@ public class ControllerSlot {
 			Integer set23, Integer set24, Integer set25, Integer set26,Integer split1,Integer split2,Integer split3,Integer split4,Integer split5,Integer split6
 			,Integer split21,Integer split22,Integer split23,Integer split24,Integer split25,Integer split26, Model model) {
 		Map<String, Object> map1 = new HashMap<String, Object>();
-		map1.put("macid2", macid2);
+		map1.put("id", macid2);
 		map1.put("macn2", macn2);
-		map1.put("namemachine", namemachine);
 		map1.put("ceiling", ceiling);
 		map1.put("zones", zones);
 		map1.put("riset", riset);
@@ -353,15 +321,9 @@ public class ControllerSlot {
 		map1.put("split24", split24);
 		map1.put("split25", split25);
 		map1.put("split26", split26);
-		System.out.println(macn2);
 
 		model.addAttribute("map1", map1);
-
-		int J = jdbc
-				.update("update MACHINE_TABLE set(ID,machine_name,ceiling,zones,riset,finish,set_dif1,set_dif2,setting_1,setting_2,setting_3,setting_4,setting_5,setting_6,setting2_1,setting2_2,setting2_3,setting2_4,setting2_5,setting2_6,split1,split2,split3,split4,split5,split6,split21,split22,split23,split24,split25,split26) = (:macid2,:macn2,:ceiling,:zones,:riset,:finish,:setdif1,:setdif2,:set1,:set2,:set3,:set4,:set5,:set6,:set21,:set22,:set23,:set24,:set25,:set26,:split1,:split2,:split3,:split4,:split5,:split6,:split21,:split22,:split23,:split24,:split25,:split26) where ID="
-						+ macid2, map1);
-		model.addAttribute(J);
-		// macDao.editMachine(macid2,set_dif1,namemachine,ceiling,zones,riset,finish,setdif1,setdif2,set1,set2,set3,set4,set5,set6,model);
+		macDao.update(map1);
 		return "finEditMachine";
 	}
 
@@ -369,9 +331,7 @@ public class ControllerSlot {
 	public String finDeleteMachine(@RequestParam(required = false) Integer ID, String namemachine, Model model) {
 		List<Map<String, Object>> finDeleteMachine = macDao.selectAll();
 		model.addAttribute("namemachine", finDeleteMachine);
-		// ボタンもformで囲わなければならない、削除と編集二つの機能を囲いたいときどうすれば？それか単純に二つをわける
 		macDao.deleteMachine(namemachine);
-		// jdbcn.update("delete from MACHINE_TABLE where ID=?",namemachine);
 		return "finDeleteMachine";
 	}
 }

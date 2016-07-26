@@ -29,29 +29,38 @@ public class MachineTableDao {
 	public List<Map<String, Object>> selectAll() {
 		return jdbcn.queryForList("select * from MACHINE_TABLE");
 	}
+	
+	public List<Map<String, Object>> selectID(Integer macid1) {
+		return jdbcn.queryForList("select * from MACHINE_TABLE where ID =?", macid1);
+	}
+	
+	public Map<String, Object> editID(Integer macid) {
+		return jdbcn.queryForList("select * from MACHINE_TABLE where ID =?", macid).get(0);
+	}
 
 	public void deleteMachine(String namemachine) {
 		jdbcn.update("delete from MACHINE_TABLE where MACHINE_NAME=?",namemachine);
 	}
 	
-	public void editMachine(Integer macid2,String set_dif1, String namemachine,Integer ceiling,String zones,String riset,String finish,String setdif1,String setdif2,Integer set1,Integer set2,Integer set3,Integer set4,Integer set5,Integer set6,Model model){
-		Map<String,Object> map1 = new HashMap<String,Object>();
-		map1.put("macid2", macid2);		
-		map1.put("namemachine", namemachine);
-		map1.put("ceiling", ceiling);
-		map1.put("zones", zones);
-		map1.put("riset", riset);
-		map1.put("finish", finish);		
-		map1.put("setdif1", setdif1);
-		map1.put("setdif2", setdif2);
-		map1.put("set1", set1);
-		map1.put("set2", set2);
-		map1.put("set3", set3);
-		map1.put("set4", set4);
-		map1.put("set5", set5);
-		map1.put("set6", set6);
-			
-		model.addAttribute("map1",map1);
-		jdbcn.update("update MACHINE_TABLE set(ID,machine_name,ceiling,zones,riset,finish,set_dif1,set_dif2,setting_1,setting_2,setting_3,setting_4,setting_5,setting_6) = (:macid2,:namemachine,:ceiling,:zones,:riset,:finish,:setdif1,:setdif2,:set1,:set2,:set3,:set4,:set5,:set6) where ID="+ macid2,map1);
-	}
+	/**
+	 * 更新をおこなう
+	 * 
+	 * @param entityMap 更新情報
+	 * @return 更新件数
+	 */
+	public int update(Map<String, Object> entityMap){
+		System.out.println("entityMap: " + entityMap);
+		return jdbc.update(
+				//"update MACHINE_TABLE set(machine_name,ceiling,zones,riset,finish,set_dif1,set_dif2,setting_1,setting_2,setting_3,setting_4,setting_5,setting_6,setting2_1,setting2_2,setting2_3,setting2_4,setting2_5,setting2_6,split1,split2,split3,split4,split5,split6,split21,split22,split23,split24,split25,split26) = (:macn2,:ceiling,:zones,:riset,:finish,:setdif1,:setdif2,:set1,:set2,:set3,:set4,:set5,:set6,:set21,:set22,:set23,:set24,:set25,:set26,:split1,:split2,:split3,:split4,:split5,:split6,:split21,:split22,:split23,:split24,:split25,:split26) where id=:id", entityMap);
+				
+				"update MACHINE_TABLE set machine_name = :macn2,ceiling = :ceiling ,zones = :zones, riset = :riset , finish = :finish , set_dif1 = :setdif1 , set_dif2 = :setdif2 , setting_1 = :set1 , setting_2 = :set2 , setting_3 = :set3 , setting_4 = :set4 , setting_5 = :set5 , setting_6 = :set6 , setting2_1 = :set21, setting2_2 = :set22 , setting2_3 = :set23 , setting2_4 = :set24 ,setting2_5 = :set25 , setting2_6 = :set26 , split1 = :split1 , split2 = :split2 , split3 = :split3 , split4 = :split4 ,split5 = :split5 ,split6 = :split6 , split21 = :split21 , split22 = :split22 , split23 = :split23 , split24 = :split24 , split25 = :split25 , split26 = :split26 where id=:id" , entityMap);
+		}
+	
+	public int insert(Map<String, Object> newMap){
+		System.out.println("newMap: " + newMap);
+		return jdbc.update(
+				//"update MACHINE_TABLE set(machine_name,ceiling,zones,riset,finish,set_dif1,set_dif2,setting_1,setting_2,setting_3,setting_4,setting_5,setting_6,setting2_1,setting2_2,setting2_3,setting2_4,setting2_5,setting2_6,split1,split2,split3,split4,split5,split6,split21,split22,split23,split24,split25,split26) = (:macn2,:ceiling,:zones,:riset,:finish,:setdif1,:setdif2,:set1,:set2,:set3,:set4,:set5,:set6,:set21,:set22,:set23,:set24,:set25,:set26,:split1,:split2,:split3,:split4,:split5,:split6,:split21,:split22,:split23,:split24,:split25,:split26) where id=:id", entityMap);
+				
+				"insert into MACHINE_TABLE (machine_name,ceiling,zones,riset,finish,set_dif1,set_dif2,setting_1,setting_2,setting_3,setting_4,setting_5,setting_6,setting2_1,setting2_2,setting2_3,setting2_4,setting2_5,setting2_6,split1,split2,split3,split4,split5,split6,split21,split22,split23,split24,split25,split26) values(:title,:ceiling,:zones,:riset,:finish,:setdif1,:setdif2,:set1,:set2,:set3,:set4,:set5,:set6,:set21,:set22,:set23,:set24,:set25,:set26,:split1,:split2,:split3,:split4,:split5,:split6,:split21,:split22,:split23,:split24,:split25,:split26)",newMap);
+		}
 }
