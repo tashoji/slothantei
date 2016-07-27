@@ -1,9 +1,5 @@
 package jp.co.sbps;
 
-import java.awt.TextField;
-
-import ch.qos.logback.core.net.SyslogOutputStream;
-
 public class SlotMain {
 
 //	public static {
