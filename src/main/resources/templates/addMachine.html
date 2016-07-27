@@ -23,11 +23,11 @@
 	<form th:action="@{/controller/finNewMachine}" action="/controller/finNewMachine" method="post">
 		<h2>機種追加</h2>
 		<h3>機種名:
-		<input type="text" size="30" name="title" value="" class="form-control" /></h3>
+		<input type="text" size="30" name="title" value="" class="form-control" required="required"/></h3>
 		<table border="1" class = "table" >
 			<tr>
 				<th>設定差項目1:</th>
-				<td><SELECT name="setdif1" class="form-control">
+				<td><SELECT name="setdif1" class="form-control" >
 				<OPTION value=""></OPTION>
 				<OPTION value="BIG">BIG</OPTION>
 				<OPTION value="REG">REG</OPTION>

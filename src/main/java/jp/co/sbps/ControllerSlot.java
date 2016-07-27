@@ -217,11 +217,6 @@ public class ControllerSlot {
 		Map<String, Object> map1 = new HashMap<String, Object>();
 		// map1.put("id", id);
 		
-		if (title == "") {
-			return "error";
-			
-		}else{
-				
 		map1.put("title", title);
 		map1.put("ceiling", ceiling);
 		map1.put("zones", zones);
@@ -254,13 +249,11 @@ public class ControllerSlot {
 		map1.put("split25", split25);
 		map1.put("split26", split26);
 		
-		
 		model.addAttribute("map1", map1);
 
 				macDao.insert(map1);	
 				return "finNewMachine";
 		}
-	}
 
 	@RequestMapping("/controller/finEditMachine")
 	public String finEditMachine(@RequestParam(required = false) Integer macid2, String macn2, String namemachine,
