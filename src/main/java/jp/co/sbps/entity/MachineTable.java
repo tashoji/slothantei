@@ -1,5 +1,4 @@
 package jp.co.sbps.entity;
-import jp.co.sbps.entity.MachineTable;
 import java.io.Serializable;
 
 /**
