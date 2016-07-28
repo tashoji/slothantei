@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import jp.co.sbps.entity.MachineTable;
@@ -66,7 +67,6 @@ public class ControllerSlot {
 		// kakusa1がkakuritu1より大きければ設定1
 		// （set2(設定2の子役確率)＋set3(設定3の子役確率)）÷２ = kakuritu2
 		// kakusa1がkakuritu1より小さく、kakuritu2より大きければ設定2
-		
 		//mainMachine.Judge();
 		
 		int kakusa1;
@@ -173,92 +173,19 @@ public class ControllerSlot {
 	}
 
 	@RequestMapping("/controller/finNewMachine")
-	public String finNewMachine(@RequestParam(required = false) String title, Integer ceiling, String zones,
-			String riset, String finish, String setdif1, String setdif2, Integer set1, Integer set2, Integer set3,
-			Integer set4, Integer set5, Integer set6, Integer set21, Integer set22, Integer set23, Integer set24,
-			Integer set25, Integer set26,Integer split1,Integer split2,Integer split3,Integer split4,Integer split5,Integer split6
-			,Integer split21,Integer split22,Integer split23,Integer split24,Integer split25,Integer split26,Model model) {
+	public String finNewMachine(@ModelAttribute MachineForm machineform,Model model) {
 		Map<String, Object> map1 = new HashMap<String, Object>();
-
-		map1.put("title", title);
-		map1.put("ceiling", ceiling);
-		map1.put("zones", zones);
-		map1.put("riset", riset);
-		map1.put("finish", finish);
-		map1.put("setdif1", setdif1);
-		map1.put("setdif2", setdif2);
-		map1.put("set1", set1);
-		map1.put("set2", set2);
-		map1.put("set3", set3);
-		map1.put("set4", set4);
-		map1.put("set5", set5);
-		map1.put("set6", set6);
-		map1.put("set21", set21);
-		map1.put("set22", set22);
-		map1.put("set23", set23);
-		map1.put("set24", set24);
-		map1.put("set25", set25);
-		map1.put("set26", set26);
-		map1.put("split1", split1);
-		map1.put("split2", split2);
-		map1.put("split3", split3);
-		map1.put("split4", split4);
-		map1.put("split5", split5);
-		map1.put("split6", split6);
-		map1.put("split21", split21);
-		map1.put("split22", split22);
-		map1.put("split23", split23);
-		map1.put("split24", split24);
-		map1.put("split25", split25);
-		map1.put("split26", split26);
-		
+		map1 = machineform.edMachine();		
 		model.addAttribute("map1", map1);
-
-				macDao.insert(map1);	
-				return "finNewMachine";
+		macDao.insert(map1);	
+		return "finNewMachine";
 		}
 
 	@RequestMapping("/controller/finEditMachine")
-	public String finEditMachine(@RequestParam(required = false)Integer macid2, String namemachine, String macn2,
-			Integer ceiling, String zones, String riset, String finish, String setdif1, String setdif2, Integer set1,
-			Integer set2, Integer set3, Integer set4, Integer set5, Integer set6, Integer set21, Integer set22,
-			Integer set23, Integer set24, Integer set25, Integer set26,Integer split1,Integer split2,Integer split3,Integer split4,Integer split5,Integer split6
-			,Integer split21,Integer split22,Integer split23,Integer split24,Integer split25,Integer split26, Model model) {
+	public String finEditMachine(@ModelAttribute MachineForm machineform, Model model) {
 		Map<String, Object> map1 = new HashMap<String, Object>();
-		map1.put("id", macid2);
-		map1.put("macn2", macn2);
-		map1.put("ceiling", ceiling);
-		map1.put("zones", zones);
-		map1.put("riset", riset);
-		map1.put("finish", finish);
-		map1.put("setdif1", setdif1);
-		map1.put("setdif2", setdif2);
-		map1.put("set1", set1);
-		map1.put("set2", set2);
-		map1.put("set3", set3);
-		map1.put("set4", set4);
-		map1.put("set5", set5);
-		map1.put("set6", set6);
-		map1.put("set21", set21);
-		map1.put("set22", set22);
-		map1.put("set23", set23);
-		map1.put("set24", set24);
-		map1.put("set25", set25);
-		map1.put("set26", set26);
-		map1.put("split1", split1);
-		map1.put("split2", split2);
-		map1.put("split3", split3);
-		map1.put("split4", split4);
-		map1.put("split5", split5);
-		map1.put("split6", split6);
-		map1.put("split21", split21);
-		map1.put("split22", split22);
-		map1.put("split23", split23);
-		map1.put("split24", split24);
-		map1.put("split25", split25);
-		map1.put("split26", split26);
-
-		model.addAttribute("map1", map1);		
+		map1 = machineform.edMachine();
+		model.addAttribute("map1", map1);	
 		macDao.update(map1);
 		return "finEditMachine";
 	}

@@ -1,5 +1,8 @@
 package jp.co.sbps.form;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class MachineForm {
 	
 	private String namemachine;
@@ -18,9 +21,9 @@ public class MachineForm {
 	
 	private Integer macid1;
 	
-	//private String macn2;
-	
-	//private Integer macid2;
+	private String macn2;
+
+	private Integer macid2;
 	
 	private String zones;
 	
@@ -144,21 +147,21 @@ public class MachineForm {
 		this.macid1 = macid1;
 	}
 
-//	public String getMacn2() {
-//		return macn2;
-//	}
-//
-//	public void setMacn2(String macn2) {
-//		this.macn2 = macn2;
-//	}
-//
-//	public Integer getMacid2() {
-//		return macid2;
-//	}
-//
-//	public void setMacid2(Integer macid2) {
-//		this.macid2 = macid2;
-//	}
+	public String getMacn2() {
+		return macn2;
+	}
+
+	public void setMacn2(String macn2) {
+		this.macn2 = macn2;
+	}
+
+	public Integer getMacid2() {
+		return macid2;
+	}
+
+	public void setMacid2(Integer macid2) {
+		this.macid2 = macid2;
+	}
 
 	public String getZones() {
 		return zones;
@@ -423,7 +426,45 @@ public class MachineForm {
 	public void setSplit26(Integer split26) {
 		this.split26 = split26;
 	}
-
 	
+	public  Map<String, Object> edMachine() {
+		Map<String, Object> map1 = new HashMap<String, Object>();
+		
+		map1.put("title", title);
+		map1.put("id", macid2);
+		map1.put("macn2", macn2);
+		map1.put("ceiling", ceiling);
+		map1.put("zones", zones);
+		map1.put("riset", riset);
+		map1.put("finish", finish);
+		map1.put("setdif1", setdif1);
+		map1.put("setdif2", setdif2);
+		map1.put("set1", set1);
+		map1.put("set2", set2);
+		map1.put("set3", set3);
+		map1.put("set4", set4);
+		map1.put("set5", set5);
+		map1.put("set6", set6);
+		map1.put("set21", set21);
+		map1.put("set22", set22);
+		map1.put("set23", set23);
+		map1.put("set24", set24);
+		map1.put("set25", set25);
+		map1.put("set26", set26);
+		map1.put("split1", split1);
+		map1.put("split2", split2);
+		map1.put("split3", split3);
+		map1.put("split4", split4);
+		map1.put("split5", split5);
+		map1.put("split6", split6);
+		map1.put("split21", split21);
+		map1.put("split22", split22);
+		map1.put("split23", split23);
+		map1.put("split24", split24);
+		map1.put("split25", split25);
+		map1.put("split26", split26);
+		
+		return map1;
+	}
 	
 }
