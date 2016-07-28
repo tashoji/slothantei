@@ -18,9 +18,9 @@ public class MachineForm {
 	
 	private Integer macid1;
 	
-	private String macn2;
+	//private String macn2;
 	
-	private Integer macid2;
+	//private Integer macid2;
 	
 	private String zones;
 	
@@ -144,21 +144,21 @@ public class MachineForm {
 		this.macid1 = macid1;
 	}
 
-	public String getMacn2() {
-		return macn2;
-	}
-
-	public void setMacn2(String macn2) {
-		this.macn2 = macn2;
-	}
-
-	public Integer getMacid2() {
-		return macid2;
-	}
-
-	public void setMacid2(Integer macid2) {
-		this.macid2 = macid2;
-	}
+//	public String getMacn2() {
+//		return macn2;
+//	}
+//
+//	public void setMacn2(String macn2) {
+//		this.macn2 = macn2;
+//	}
+//
+//	public Integer getMacid2() {
+//		return macid2;
+//	}
+//
+//	public void setMacid2(Integer macid2) {
+//		this.macid2 = macid2;
+//	}
 
 	public String getZones() {
 		return zones;

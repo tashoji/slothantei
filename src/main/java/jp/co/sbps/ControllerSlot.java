@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import jp.co.sbps.entity.MachineTable;
 import jp.co.sbps.form.MachineForm;
 
@@ -220,7 +219,7 @@ public class ControllerSlot {
 		}
 
 	@RequestMapping("/controller/finEditMachine")
-	public String finEditMachine(@RequestParam(required = false) Integer macid2, String macn2, String namemachine,
+	public String finEditMachine(@RequestParam(required = false)Integer macid2, String namemachine, String macn2,
 			Integer ceiling, String zones, String riset, String finish, String setdif1, String setdif2, Integer set1,
 			Integer set2, Integer set3, Integer set4, Integer set5, Integer set6, Integer set21, Integer set22,
 			Integer set23, Integer set24, Integer set25, Integer set26,Integer split1,Integer split2,Integer split3,Integer split4,Integer split5,Integer split6
@@ -259,8 +258,7 @@ public class ControllerSlot {
 		map1.put("split25", split25);
 		map1.put("split26", split26);
 
-		model.addAttribute("map1", map1);
-		
+		model.addAttribute("map1", map1);		
 		macDao.update(map1);
 		return "finEditMachine";
 	}
