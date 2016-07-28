@@ -174,19 +174,19 @@ public class ControllerSlot {
 
 	@RequestMapping("/controller/finNewMachine")
 	public String finNewMachine(@ModelAttribute MachineForm machineform,Model model) {
-		Map<String, Object> map1 = new HashMap<String, Object>();
-		map1 = machineform.edMachine();		
-		model.addAttribute("map1", map1);
-		macDao.insert(map1);	
+		Map<String, Object> map = new HashMap<String, Object>();
+		map = machineform.edMachine();		
+		model.addAttribute("map1", map);
+		macDao.insert(map);	
 		return "finNewMachine";
 		}
 
 	@RequestMapping("/controller/finEditMachine")
 	public String finEditMachine(@ModelAttribute MachineForm machineform, Model model) {
-		Map<String, Object> map1 = new HashMap<String, Object>();
-		map1 = machineform.edMachine();
-		model.addAttribute("map1", map1);	
-		macDao.update(map1);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map = machineform.edMachine();
+		model.addAttribute("map1", map);	
+		macDao.update(map);
 		return "finEditMachine";
 	}
 
