@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import jp.co.sbps.entity.MachineTable;
+import jp.co.sbps.form.MachineForm;
 
 @Controller
 public class ControllerSlot {
@@ -18,7 +19,7 @@ public class ControllerSlot {
 	private MachineTableDao macDao;
 	
 	@RequestMapping("/controller/title")
-	public String title(String namemachine, Model model) {
+	public String title(Model model) {
 		return "title";
 	}
 
@@ -30,58 +31,30 @@ public class ControllerSlot {
 	}
 	
 	@RequestMapping("/controller/machine")
-	public String machine(@RequestParam(required = false) Integer id, String name, Model model) {
+	public String machine(@RequestParam(required = false) MachineForm machineForm, Model model) {
 		List<MachineTable> machine = macDao.selectAll();
-		model.addAttribute("id", id);
+		model.addAttribute("machineform", machineForm);
 		model.addAttribute("machines", machine);
-		System.out.println(machine);
 		return "machine";
 	}
 	
 	@RequestMapping("/controller/nums")
-	public String nums(@RequestParam(required = false) Integer num, Model model) {
-		model.addAttribute("num", num);
+	public String nums(@RequestParam(required = false) MachineForm machineForm, Model model) {
+		model.addAttribute("machineform", machineForm);
 		return "title";
 	}
 
 	@RequestMapping(value = "/controller/detail")
-	public String detail(@RequestParam(required = false) String macn1, Integer macid1, String zones, String riset,
-			String finish, String setdif1, String setdif2, Integer ceiling, Integer hantei1, Integer hantei2,
-			Integer hantei3, Integer set1, Integer set2, Integer set3, Integer set4, Integer set5, Integer set6,
-			Integer set21, Integer set22, Integer set23, Integer set24, Integer set25, Integer set26, Model model) {
-		System.out.println(set1);
-		System.out.println(set2);
-		System.out.println(set3);
-		
+	public String detail(@RequestParam(required = false)Integer macid1, Model model) {
 		MachineTable detail = macDao.selectID(macid1);
 		model.addAttribute("detail", detail);
-		model.addAttribute("ceiling", ceiling);
-		model.addAttribute("macn1", macn1);
 		model.addAttribute("macid1", macid1);
-		model.addAttribute("zones", zones);
-		model.addAttribute("riset", riset);
-		model.addAttribute("finish", finish);
-		model.addAttribute("setdif1", setdif1);
-		model.addAttribute("setdif2", setdif2);
-		model.addAttribute("set1", set1);
-		model.addAttribute("set2", set2);
-		model.addAttribute("set3", set3);
-		model.addAttribute("set4", set4);
-		model.addAttribute("set5", set5);
-		model.addAttribute("set6", set6);
-		model.addAttribute("set21", set21);
-		model.addAttribute("set22", set22);
-		model.addAttribute("set23", set23);
-		model.addAttribute("set24", set24);
-		model.addAttribute("set25", set25);
-		model.addAttribute("set26", set26);
 
 		return "detail";
 	}
 
 	@RequestMapping("/controller/hantei")
-	public String hantei(@RequestParam(required = false) String macn1, Integer macid1, String zones, String riset,
-			String finish, String setdif1, String setdif2, Integer ceiling, Integer hantei1, Integer hantei2,
+	public String hantei(@RequestParam(required = false) String macn1, Integer macid1, MachineForm machineform, String setdif1, String setdif2, Integer hantei1, Integer hantei2,
 			Integer hantei3, Integer set1, Integer set2, Integer set3, Integer set4, Integer set5, Integer set6,
 			Integer set21, Integer set22, Integer set23, Integer set24, Integer set25, Integer set26, Model model) {
 		MachineTable detail =  macDao.selectID(macid1);
@@ -94,10 +67,9 @@ public class ControllerSlot {
 		// kakusa1がkakuritu1より大きければ設定1
 		// （set2(設定2の子役確率)＋set3(設定3の子役確率)）÷２ = kakuritu2
 		// kakusa1がkakuritu1より小さく、kakuritu2より大きければ設定2
-		System.out.println(hantei1);
-		System.out.println(set1);
-		System.out.println(set2);
-
+		
+		//mainMachine.Judge();
+		
 		int kakusa1;
 		int kakusa2;
 		int kakuritu1;
@@ -115,7 +87,6 @@ public class ControllerSlot {
 
 		kakusa1 = hantei1 / hantei2;
 		kakusa2 = hantei1 / hantei3;
-		// 入れるとヌルの時にエラーになる
 		kakuritu1 = (set1 + set2) / 2;
 		kakuritu2 = (set2 + set3) / 2;
 		kakuritu3 = (set3 + set4) / 2;
@@ -126,8 +97,6 @@ public class ControllerSlot {
 		kakuritu23 = (set23 + set24) / 2;
 		kakuritu24 = (set24 + set25) / 2;
 		kakuritu25 = (set25 + set26) / 2;
-		System.out.println(kakusa2);
-		System.out.println(hantei1);
 
 		if (kakusa1 >= kakuritu1) {
 			forecast = "1: " + setdif1 + "確率は「設定1」の近似値またはそれ以下です。";
@@ -160,12 +129,8 @@ public class ControllerSlot {
 		model.addAttribute("hantei2", hantei2);
 		model.addAttribute("hantei3", hantei3);
 		model.addAttribute("detail", detail);
-		model.addAttribute("ceiling", ceiling);
 		model.addAttribute("macn1", macn1);
 		model.addAttribute("macid", macid1);
-		model.addAttribute("zones", zones);
-		model.addAttribute("riset", riset);
-		model.addAttribute("finish", finish);
 		model.addAttribute("setdif1", setdif1);
 		model.addAttribute("setdif2", setdif2);
 		model.addAttribute("set1", set1);
@@ -215,8 +180,7 @@ public class ControllerSlot {
 			Integer set25, Integer set26,Integer split1,Integer split2,Integer split3,Integer split4,Integer split5,Integer split6
 			,Integer split21,Integer split22,Integer split23,Integer split24,Integer split25,Integer split26,Model model) {
 		Map<String, Object> map1 = new HashMap<String, Object>();
-		// map1.put("id", id);
-		
+
 		map1.put("title", title);
 		map1.put("ceiling", ceiling);
 		map1.put("zones", zones);
@@ -302,10 +266,11 @@ public class ControllerSlot {
 	}
 
 	@RequestMapping("/controller/finDeleteMachine")
-	public String finDeleteMachine(@RequestParam(required = false) Integer ID, String namemachine, Model model) {
+	public String finDeleteMachine(@RequestParam(required = false) String namemachine, Model model) {
 		List<MachineTable> finDeleteMachine = macDao.selectAll();
 		model.addAttribute("namemachine", finDeleteMachine);
 		macDao.deleteMachine(namemachine);
 		return "finDeleteMachine";
 	}
+	
 }
