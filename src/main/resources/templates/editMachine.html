@@ -1,266 +1,260 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" lang="ja">
-<head>
-<title>すろっと</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta http-equiv="Content-Script-Type" content="text/javascript" />
-<meta http-equiv="Content-Style-Type" content="text/css" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<link
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
-	crossorigin="anonymous">
-</link>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-	crossorigin="anonymous">
-</script>
-</head>
-<body style="font-family: HG正楷書体-PRO">
-<div class="jumbotron">
-	<form th:action="@{/controller/finEditMachine}" method="post">
-		<h2>機種データ編集</h2>
-		<h3>機種名:
-		<td th:text="${detail.machineName}"></td></h3>
-		 <input type="hidden"
-			th:value="${detail.machineName}" name="macn2" /> 
-			<input
-			type="hidden" th:value="${detail.id}" name="macid2" />
-			<table border="1" class = "table" >
-				<tr>
+	<head>
+		<title>すろっと</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="Content-Script-Type" content="text/javascript" />
+		<meta http-equiv="Content-Style-Type" content="text/css" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+		<link
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+			crossorigin="anonymous">
+		</link>
+		<script
+			src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+			integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+			crossorigin="anonymous">
+		</script>
+	</head>
+	<body style="font-family: HG正楷書体-PRO">
+		<div class="jumbotron">
+			<form th:action="@{/controller/finEditMachine}" method="post">
+				<h2>機種データ編集</h2>
+				<h3>機種名:
+				<td th:text="${detail.machineName}"></td></h3>
+				<input type="hidden" th:value="${detail.machineName}" name="macn2" /> 
+				<input type="hidden" th:value="${detail.id}" name="macid2" />
+				<table border="1" class = "table" >
+					<tr>
 					<th>設定差項目1:</th>
 					<td>		
-				<SELECT name="setdif1" class="form-control">
-				<OPTION th:text="${detail.setDif1}"></OPTION> <!--	<OPTION th:value ="${setdif1}"></OPTION> -->
-				<OPTION value=""></OPTION>
-				<OPTION value="BIG">BIG</OPTION>
-				<OPTION value="REG">REG</OPTION>
-				<OPTION value="合成">合成</OPTION>
-				<OPTION value="赤7">赤7</OPTION>
-				<OPTION value="青7">青7</OPTION>
-				<OPTION value="白7">白7</OPTION>
-				<OPTION value="リプレイ">リプレイ</OPTION>
-				<OPTION value="スイカ">スイカ</OPTION>
-				<OPTION value="弱スイカ">弱スイカ</OPTION>
-				<OPTION value="強スイカ">強スイカ</OPTION>
-				<OPTION value="チェリー">チェリー</OPTION>
-				<OPTION value="弱チェリー">弱チェリー</OPTION>
-				<OPTION value="強チェリー">強チェリー</OPTION>
-				<OPTION value="中段チェリー">中段チェリー</OPTION>
-				<OPTION value="共通ベル">共通ベル</OPTION>
-				<OPTION value="強ベル">強ベル</OPTION>
-				<OPTION value="ハズレ">ハズレ</OPTION>
-				<OPTION value="AT,ART">AT,ART</OPTION>
-				<OPTION value="AT,ART初当り">AT,ART初当り</OPTION>
-				<OPTION value="AT,ART直撃">AT,ART直撃</OPTION>
-				<OPTION value="CZ">CZ</OPTION>
-				</SELECT></td>
-				</tr>
-			
-				<tr>
-					<th>設定1:</th>
-					<td>1/ <INPUT type="number" size="5" name="set1"
-						th:value="${detail.setting_1}" class="form-control"/></td>
-				</tr>
-				<tr>
-					<th>設定2:</th>
-					<td>1/<INPUT type="number" size="5" name="set2"
-						th:value="${detail.setting_2}" class="form-control"/></td>
-				</tr>
-				<tr>
-					<th>設定3:</th>
-					<td>1/<INPUT type="number" size="5" name="set3"
-						th:value="${detail.setting_3}" class="form-control"/></td>
-				</tr>
-				<tr>
-					<th>設定4:</th>
-					<td>1/<INPUT type="number" size="5" name="set4"
-						th:value="${detail.setting_4}" class="form-control"/></td>
-				</tr>
-				<tr>
-					<th>設定5:</th>
-					<td>1/<INPUT type="number" size="5" name="set5"
-						th:value="${detail.setting_5}" class="form-control"/></td>
-				</tr>
-				<tr>
-					<th>設定6:</th>
-					<td>1/<INPUT type="number" size="5" name="set6"
-						th:value="${detail.setting_6}" class="form-control"/></td>
-				</tr>
-			</table> 
-			<table border="1" class = "table" >
-				<tr>
+					<SELECT name="setdif1" class="form-control">
+						<OPTION th:text="${detail.setDif1}"></OPTION> <!--	<OPTION th:value ="${setdif1}"></OPTION> -->
+						<OPTION value=""></OPTION>
+						<OPTION value="BIG">BIG</OPTION>
+						<OPTION value="REG">REG</OPTION>
+						<OPTION value="合成">合成</OPTION>
+						<OPTION value="赤7">赤7</OPTION>
+						<OPTION value="青7">青7</OPTION>
+						<OPTION value="白7">白7</OPTION>
+						<OPTION value="リプレイ">リプレイ</OPTION>
+						<OPTION value="スイカ">スイカ</OPTION>
+						<OPTION value="弱スイカ">弱スイカ</OPTION>
+						<OPTION value="強スイカ">強スイカ</OPTION>
+						<OPTION value="チェリー">チェリー</OPTION>
+						<OPTION value="弱チェリー">弱チェリー</OPTION>
+						<OPTION value="強チェリー">強チェリー</OPTION>
+						<OPTION value="中段チェリー">中段チェリー</OPTION>
+						<OPTION value="共通ベル">共通ベル</OPTION>
+						<OPTION value="強ベル">強ベル</OPTION>
+						<OPTION value="ハズレ">ハズレ</OPTION>
+						<OPTION value="AT,ART">AT,ART</OPTION>
+						<OPTION value="AT,ART初当り">AT,ART初当り</OPTION>
+						<OPTION value="AT,ART直撃">AT,ART直撃</OPTION>
+						<OPTION value="CZ">CZ</OPTION>
+					</SELECT></td>
+					</tr>
+					<tr>
+						<th>設定1:</th>
+						<td>1/ <INPUT type="number" size="5" name="set1"
+							th:value="${detail.setting_1}" class="form-control"/></td>
+					</tr>
+					<tr>
+						<th>設定2:</th>
+						<td>1/<INPUT type="number" size="5" name="set2"
+							th:value="${detail.setting_2}" class="form-control"/></td>
+					</tr>
+					<tr>
+						<th>設定3:</th>
+						<td>1/<INPUT type="number" size="5" name="set3"
+							th:value="${detail.setting_3}" class="form-control"/></td>
+					</tr>
+					<tr>
+						<th>設定4:</th>
+						<td>1/<INPUT type="number" size="5" name="set4"
+							th:value="${detail.setting_4}" class="form-control"/></td>
+					</tr>
+					<tr>
+						<th>設定5:</th>
+						<td>1/<INPUT type="number" size="5" name="set5"
+							th:value="${detail.setting_5}" class="form-control"/></td>
+					</tr>
+					<tr>
+						<th>設定6:</th>
+						<td>1/<INPUT type="number" size="5" name="set6"
+							th:value="${detail.setting_6}" class="form-control"/></td>
+					</tr>
+				</table> 
+				<table border="1" class = "table" >
+					<tr>
 					<th>設定差項目2:</th>
 					<td>
-				<SELECT name="setdif2" class="form-control">
-				<OPTION th:text="${detail.setDif2}"></OPTION> <!--	<OPTION th:value ="${setdif1}"></OPTION> -->
-				<OPTION value=""></OPTION>
-				<OPTION value="BIG">BIG</OPTION>
-				<OPTION value="REG">REG</OPTION>
-				<OPTION value="合成">合成</OPTION>
-				<OPTION value="赤7">赤7</OPTION>
-				<OPTION value="青7">青7</OPTION>
-				<OPTION value="白7">白7</OPTION>
-				<OPTION value="リプレイ">リプレイ</OPTION>
-				<OPTION value="スイカ">スイカ</OPTION>
-				<OPTION value="弱スイカ">弱スイカ</OPTION>
-				<OPTION value="強スイカ">強スイカ</OPTION>
-				<OPTION value="チェリー">チェリー</OPTION>
-				<OPTION value="弱チェリー">弱チェリー</OPTION>
-				<OPTION value="強チェリー">強チェリー</OPTION>
-				<OPTION value="中段チェリー">中段チェリー</OPTION>
-				<OPTION value="共通ベル">共通ベル</OPTION>
-				<OPTION value="強ベル">強ベル</OPTION>
-				<OPTION value="ハズレ">ハズレ</OPTION>
-				<OPTION value="AT,ART">AT,ART</OPTION>
-				<OPTION value="AT,ART初当り">AT,ART初当り</OPTION>
-				<OPTION value="AT,ART直撃">AT,ART直撃</OPTION>
-				
-				<OPTION value="CZ">CZ</OPTION>
-				</SELECT></td>
-				</tr>
-				<tr>
-					<th>設定1:</th>
-					<td>1/<INPUT type="number" size="5" name="set21"
-						th:value="${detail.setting2_1}" class="form-control"/></td>
-				</tr>
-				<tr>
+					<SELECT name="setdif2" class="form-control">
+						<OPTION th:text="${detail.setDif2}"></OPTION> <!--	<OPTION th:value ="${setdif1}"></OPTION> -->
+						<OPTION value=""></OPTION>
+						<OPTION value="BIG">BIG</OPTION>
+						<OPTION value="REG">REG</OPTION>
+						<OPTION value="合成">合成</OPTION>
+						<OPTION value="赤7">赤7</OPTION>
+						<OPTION value="青7">青7</OPTION>
+						<OPTION value="白7">白7</OPTION>
+						<OPTION value="リプレイ">リプレイ</OPTION>
+						<OPTION value="スイカ">スイカ</OPTION>
+						<OPTION value="弱スイカ">弱スイカ</OPTION>
+						<OPTION value="強スイカ">強スイカ</OPTION>
+						<OPTION value="チェリー">チェリー</OPTION>
+						<OPTION value="弱チェリー">弱チェリー</OPTION>
+						<OPTION value="強チェリー">強チェリー</OPTION>
+						<OPTION value="中段チェリー">中段チェリー</OPTION>
+						<OPTION value="共通ベル">共通ベル</OPTION>
+						<OPTION value="強ベル">強ベル</OPTION>
+						<OPTION value="ハズレ">ハズレ</OPTION>
+						<OPTION value="AT,ART">AT,ART</OPTION>
+						<OPTION value="AT,ART初当り">AT,ART初当り</OPTION>
+						<OPTION value="AT,ART直撃">AT,ART直撃</OPTION>
+						<OPTION value="CZ">CZ</OPTION>
+					</SELECT></td>
+					</tr>
+					<tr>
+						<th>設定1:</th>
+						<td>1/<INPUT type="number" size="5" name="set21"
+							th:value="${detail.setting2_1}" class="form-control"/></td>
+					</tr>
+					<tr>
 					<th>設定2:</th>
-					<td>1/<INPUT type="number" size="5" name="set22"
-						th:value="${detail.setting2_2}" class="form-control"/></td>
-				</tr>
-				<tr>
+						<td>1/<INPUT type="number" size="5" name="set22"
+							th:value="${detail.setting2_2}" class="form-control"/></td>
+					</tr>
+					<tr>
+						<th>設定3:</th>
+						<td>1/<INPUT type="number" size="5" name="set23"
+							th:value="${detail.setting2_3}" class="form-control"/></td>
+					</tr>
+					<tr>
+						<th>設定4:</th>
+						<td>1/<INPUT type="number" size="5" name="set24"
+							th:value="${detail.setting2_4}" class="form-control"/></td>
+					</tr>
+					<tr>
+						<th>設定5:</th>
+						<td>1/<INPUT type="number" size="5" name="set25"
+							th:value="${detail.setting2_5}" class="form-control"/></td>
+					</tr>
+					<tr>
+						<th>設定6:</th>
+						<td>1/<INPUT type="number" size="5" name="set26"
+							th:value="${detail.setting2_6}" class="form-control"/></td>
+					</tr>
+				</table>  
+				<th>機械割</th>
+				<table border="1" class = "table" >
+					<tr>
+					<th>設定1:</th>
+					<td><INPUT type="number" size="4" name="split1" th:value="${detail.split1}" class="form-control"/>.<INPUT type="number" size="1" name="split21" th:value="${detail.split21}" class="form-control"/></td>
+					<th>設定2:</th>
+					<td><INPUT type="number" size="4" name="split2" th:value="${detail.split2}" class="form-control"/>.<INPUT type="number" size="1" name="split22" th:value="${detail.split22}" class="form-control"/></td>
+					</tr>
+					<tr>
 					<th>設定3:</th>
-					<td>1/<INPUT type="number" size="5" name="set23"
-						th:value="${detail.setting2_3}" class="form-control"/></td>
-				</tr>
-				<tr>
+					<td><INPUT type="number" size="4" name="split3" th:value="${detail.split3}" class="form-control"/>.<INPUT type="number" size="1" name="split23" th:value="${detail.split23}" class="form-control"/></td>
 					<th>設定4:</th>
-					<td>1/<INPUT type="number" size="5" name="set24"
-						th:value="${detail.setting2_4}" class="form-control"/></td>
-				</tr>
-				<tr>
+					<td><INPUT type="number" size="4" name="split4" th:value="${detail.split4}" class="form-control"/>.<INPUT type="number" size="1" name="split24" th:value="${detail.split24}" class="form-control"/></td>
+					</tr>
+					<tr>
 					<th>設定5:</th>
-					<td>1/<INPUT type="number" size="5" name="set25"
-						th:value="${detail.setting2_5}" class="form-control"/></td>
-				</tr>
-				<tr>
+					<td><INPUT type="number" size="4" name="split5" th:value="${detail.split5}" class="form-control"/>.<INPUT type="number" size="1" name="split25" th:value="${detail.split25}" class="form-control"/></td>
 					<th>設定6:</th>
-					<td>1/<INPUT type="number" size="5" name="set26"
-						th:value="${detail.setting2_6}" class="form-control"/></td>
-				</tr>
-			</table>  
-			<th>機械割</th>
-		<table border="1" class = "table" >
-					<tr>
-				<th>設定1:</th>
-				<td><INPUT type="number" size="4" name="split1" th:value="${detail.split1}" class="form-control"/>.<INPUT type="number" size="1" name="split21" th:value="${detail.split21}" class="form-control"/></td>
-				<th>設定2:</th>
-				<td><INPUT type="number" size="4" name="split2" th:value="${detail.split2}" class="form-control"/>.<INPUT type="number" size="1" name="split22" th:value="${detail.split22}" class="form-control"/></td>
-				</tr>
-					<tr>
-			<th>設定3:</th>
-				<td><INPUT type="number" size="4" name="split3" th:value="${detail.split3}" class="form-control"/>.<INPUT type="number" size="1" name="split23" th:value="${detail.split23}" class="form-control"/></td>
-				<th>設定4:</th>
-				<td><INPUT type="number" size="4" name="split4" th:value="${detail.split4}" class="form-control"/>.<INPUT type="number" size="1" name="split24" th:value="${detail.split24}" class="form-control"/></td>
-				</tr>
-					<tr>
-				<th>設定5:</th>
-				<td><INPUT type="number" size="4" name="split5" th:value="${detail.split5}" class="form-control"/>.<INPUT type="number" size="1" name="split25" th:value="${detail.split25}" class="form-control"/></td>
-				<th>設定6:</th>
-				<td><INPUT type="number" size="4" name="split6" th:value="${detail.split6}" class="form-control"/>.<INPUT type="number" size="1" name="split26" th:value="${detail.split26}" class="form-control"/></td>
-			</tr>
-		</table>
-			<table border="1" class = "table" >
-			<th>天井：</th>
-			<td><INPUT type="number" size="2" name="ceiling"
-				th:value="${detail.ceiling}" class="form-control"/></td> 
-				<th> 朝一（リセット）判定：</th>
-				 <td><SELECT name="riset" class="form-control">
-				<OPTION value="〇">〇</OPTION>
-				<OPTION value="△">△</OPTION>
-				<OPTION value="×">×</OPTION>
-				</SELECT></td> 
-				<th>ゾーン：</th>
-			<td><INPUT type="text" size="7" name="zones"
-				th:value="${detail.zones}" class="form-control"/></td>
-				<th> ヤメ時：</th>
-			<td><INPUT type="text" size="10" name="finish"
-				th:value="${detail.finish}" class="form-control"/></td>
-		</table>
-
+					<td><INPUT type="number" size="4" name="split6" th:value="${detail.split6}" class="form-control"/>.<INPUT type="number" size="1" name="split26" th:value="${detail.split26}" class="form-control"/></td>
+					</tr>
+				</table>
+				<table border="1" class = "table" >
+					<th>天井：</th>
+					<td><INPUT type="number" size="2" name="ceiling"
+					th:value="${detail.ceiling}" class="form-control"/></td> 
+					<th> 朝一（リセット）判定：</th>
+					<td><SELECT name="riset" class="form-control">
+						<OPTION value="〇">〇</OPTION>
+						<OPTION value="△">△</OPTION>
+						<OPTION value="×">×</OPTION>
+					</SELECT></td> 
+					<th>ゾーン：</th>
+					<td><INPUT type="text" size="7" name="zones"
+						th:value="${detail.zones}" class="form-control"/></td>
+						<th> ヤメ時：</th>
+					<td><INPUT type="text" size="10" name="finish"
+						th:value="${detail.finish}" class="form-control"/></td>
+				</table>
+				<p>
+					<input type="submit" value="更新" />
+				</p>
+			</form>
 			<p>
-				<input type="submit" value="更新" />
+			<form th:action="@{/controller/selectMachine}" action="/controller/selectMachine" method="post">
+				<input type="submit" value="戻る" />
+			</form>
 			</p>
-	</form>
-
-	<p>
-	<form th:action="@{/controller/selectMachine}" action="/controller/selectMachine" method="post">
-		<input type="submit" value="戻る" />
-	</form>
-	</p>
-	<style type="text/css">
-h2 {
-	position: relative;
-	padding: .25em 0 .5em .75em;
-	border-left: 6px solid #3498db;
-}
-
-h2::after {
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	content: '';
-	width: 100%;
-	height: 0;
-	border-bottom: 1px solid #ccc;
-}
-
-input[type*="submit"] {
-	/* 文字サイズを1.4emに指定 */
-	font-size: 1.4em;
-	/* 縦方向に5px
-     * 横方向に30pxの余白を指定 */
-	padding: 5px 35px;
-	/* 文字色を白色に指定 */
-	color: #fff;
-	/* ボーダーをなくす */
-	border-style: none;
-	/* ボタンの色を設定する*/
-	background-color: #22d;
-	/* ボタンの影の指定
-     * 影の横幅を2px
-     * 縦長を2px
-     * ぼかしを3px
-     * 広がりを1px
-     * 色を#666（グレー）に指定 */
-	box-shadow: 2px 2px 3px 1px #666;
-	-moz-box-shadow: 2px 2px 3px 1px #666;
-	-webkit-box-shadow: 2px 2px 3px 1px #666;
-	/* テキストの影の指定
-     * 影の横幅を1px
-     * 縦長を1px
-     * ぼかしを1px
-     * 色を#000（白）に指定 */
-	text-shadow: 1px 1px 1px #fff;
-	/* グラデーションの指定 */
-	background: -moz-linear-gradient(bottom, #36d, #248 50%, #36d);
-	background: -webkit-gradient(linear, left bottom, left top, from(#36d),
-		color-stop(0.5, #248), to(#36d));
-	/* 角丸の指定 */
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-	/* 透明度を20%に指定 */
-	opacity: 0.8;
-}
-.jumbotron {
-  background-image: url("../bb02.jpg");
-  background-size: cover;
-}
-</style>
-</div>
-</body>
+			<style type="text/css">
+				h2 {
+					position: relative;
+					padding: .25em 0 .5em .75em;
+					border-left: 6px solid #3498db;
+				}
+				
+				h2::after {
+					position: absolute;
+					left: 0;
+					bottom: 0;
+					content: '';
+					width: 100%;
+					height: 0;
+					border-bottom: 1px solid #ccc;
+				}
+				
+				input[type*="submit"] {
+					/* 文字サイズを1.4emに指定 */
+					font-size: 1.4em;
+					/* 縦方向に5px
+				     * 横方向に30pxの余白を指定 */
+					padding: 5px 35px;
+					/* 文字色を白色に指定 */
+					color: #fff;
+					/* ボーダーをなくす */
+					border-style: none;
+					/* ボタンの色を設定する*/
+					background-color: #22d;
+					/* ボタンの影の指定
+				     * 影の横幅を2px
+				     * 縦長を2px
+				     * ぼかしを3px
+				     * 広がりを1px
+				     * 色を#666（グレー）に指定 */
+					box-shadow: 2px 2px 3px 1px #666;
+					-moz-box-shadow: 2px 2px 3px 1px #666;
+					-webkit-box-shadow: 2px 2px 3px 1px #666;
+					/* テキストの影の指定
+				     * 影の横幅を1px
+				     * 縦長を1px
+				     * ぼかしを1px
+				     * 色を#000（白）に指定 */
+					text-shadow: 1px 1px 1px #fff;
+					/* グラデーションの指定 */
+					background: -moz-linear-gradient(bottom, #36d, #248 50%, #36d);
+					background: -webkit-gradient(linear, left bottom, left top, from(#36d),
+						color-stop(0.5, #248), to(#36d));
+					/* 角丸の指定 */
+					-moz-border-radius: 5px;
+					-webkit-border-radius: 5px;
+					border-radius: 5px;
+					/* 透明度を20%に指定 */
+					opacity: 0.8;
+				}
+				.jumbotron {
+				  background-image: url("../bb02.jpg");
+				  background-size: cover;
+				}
+			</style>
+		</div>
+	</body>
 </html>

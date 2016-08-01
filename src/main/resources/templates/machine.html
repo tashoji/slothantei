@@ -1,143 +1,110 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" lang="ja" >
-<head>
-<title>すろっと</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta http-equiv="Content-Script-Type" content="text/javascript" />
-<meta http-equiv="Content-Style-Type" content="text/css" />
-<meta name="viewport" content="width=device-width,initial-scale=0.9"/>
-<link
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
-	crossorigin="anonymous">
-</link>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-	crossorigin="anonymous">
-</script>
-</head>
-<body style="font-family: HG正楷書体-PRO">
-  <div class="jumbotron">
-  <div class="container">
-	<Center>
-		<h2>きしゅめ～</h2>
-<!-- 	<div class="col-md-8 col-xs-8">
+	<head>
+	<title>すろっと</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta http-equiv="Content-Script-Type" content="text/javascript" />
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<meta name="viewport" content="width=device-width,initial-scale=0.9"/>
+	<link
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+		rel="stylesheet"
+		integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+		crossorigin="anonymous">
+	</link>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+		integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+		crossorigin="anonymous">
+	</script>
+	</head>
+	<body style="font-family: HG正楷書体-PRO">
+		  <div class="jumbotron">
+			  <div class="container">
+				<Center>
+					<h2>きしゅめ～</h2>
+					<span th:each="machine : ${machines}">
+						<p>
+						<form th:action="@{/controller/detail}" action="/controller/detail" method="post">
+							<input type="submit" th:value="${machine.machineName}" name = "macn1"/>
+							<input type="hidden" th:value="${machine.id}" name = "macid1" />
+				  			<input type="hidden" th:value="${machine.ceiling}" name = "ceiling" />
+							<input type="hidden" th:value="${machine.zones}" name = "zones" />
+							<input type="hidden" th:value="${machine.riset}" name = "riset" />
+							<input type="hidden" th:value="${machine.finish}" name = "finish" />
+							<input type="hidden" th:value="${machine.setDif1}" name = "setdif1" />
+							<input type="hidden" th:value="${machine.setDif2}" name = "setdif2" />
+							<input type="hidden" th:value="${machine.setting_1}" name = "set1" />
+							<input type="hidden" th:value="${machine.setting_2}" name = "set2" />
+							<input type="hidden" th:value="${machine.setting_3}" name = "set3" />
+							<input type="hidden" th:value="${machine.setting_4}" name = "set4" />
+							<input type="hidden" th:value="${machine.setting_5}" name = "set5" />
+							<input type="hidden" th:value="${machine.setting_6}" name = "set6" />	
+							<input type="hidden" th:value="${machine.setting2_1}" name = "set1" />
+							<input type="hidden" th:value="${machine.setting2_2}" name = "set2" />
+							<input type="hidden" th:value="${machine.setting2_3}" name = "set3" />
+							<input type="hidden" th:value="${machine.setting2_4}" name = "set4" />
+							<input type="hidden" th:value="${machine.setting2_5}" name = "set5" />
+							<input type="hidden" th:value="${machine.setting2_6}" name = "set6" />
+						</form>
+						</p>
+					</span>
+					<p>
+					<form th:action="@{/controller/title}" action="/controller/title" method="post">
+						<input type="submit" value="戻る" />
+					</form>	
+					</p>
+				</Center>
+				<style type="text/css">
+				
+					input[type*="submit"] {
+					width: 350px;
+					white-space: normal;
+					wordbreak: break-all;
+						/* 文字サイズを1.5emに指定 */
+						font-size: 1.5em;
+						/* 縦方向に5px
+					     * 横方向に30pxの余白を指定 */
+						padding: 5px 30px;
+						/* 文字色を白色に指定 */
+						color: #fff;
+						/* ボーダーをなくす */
+						border-style: none;
+						/* ボタンの色を設定する*/
+						background-color: #22d;
+						/* ボタンの影の指定
+					     * 影の横幅を2px
+					     * 縦長を2px
+					     * ぼかしを3px
+					     * 広がりを1px
+					     * 色を#666（グレー）に指定 */
+						box-shadow: 2px 2px 3px 1px #666;
+						-moz-box-shadow: 2px 2px 3px 1px #666;
+						-webkit-box-shadow: 2px 2px 3px 1px #666;
+						/* テキストの影の指定
+					     * 影の横幅を1px
+					     * 縦長を1px
+					     * ぼかしを1px
+					     * 色を#000（白）に指定 */
+						text-shadow: 1px 1px 1px #fff;
+						/* グラデーションの指定 */
+						background: -moz-linear-gradient(bottom, #36d, #248 50%, #36d);
+						background: -webkit-gradient(linear, left bottom, left top, from(#36d),
+							color-stop(0.5, #248), to(#36d));
+						/* 角丸の指定 */
+						-moz-border-radius: 5px;
+						-webkit-border-radius: 5px;
+						border-radius: 5px;
+						/* 透明度を20%に指定 */
+						opacity: 0.8;
+					}
+					.jumbotron {
+					  background-image: url("../bb03.jpg");
+					  background-size: cover;
+					
+					}
+				</style>
+			</div>
 		</div>
-		<div class="col-md-1 col-xs-1">
-		機種名検索：
-		</div>
-		<div class="col-md-3 col-xs-3">
-<div class="input-group">
-  <input type="text" class="form-control"/>
-  <span class="input-group-btn">
-    <button class="btn btn-default" type="submit">
-      <i class='glyphicon glyphicon-search'></i>
-    </button>
-  </span>
-</div>
-</div>
--->
-		<span th:each="machine : ${machines}">
-			<p>
-			<form th:action="@{/controller/detail}" action="/controller/detail" method="post">
-				<input type="submit" th:value="${machine.machineName}" name = "macn1"/>
-				<input type="hidden" th:value="${machine.id}" name = "macid1" />
-  			<input type="hidden" th:value="${machine.ceiling}" name = "ceiling" />
-<input type="hidden" th:value="${machine.zones}" name = "zones" />
-<input type="hidden" th:value="${machine.riset}" name = "riset" />
-<input type="hidden" th:value="${machine.finish}" name = "finish" />
-<input type="hidden" th:value="${machine.setDif1}" name = "setdif1" />
-<input type="hidden" th:value="${machine.setDif2}" name = "setdif2" />
-<input type="hidden" th:value="${machine.setting_1}" name = "set1" />
-<input type="hidden" th:value="${machine.setting_2}" name = "set2" />
-<input type="hidden" th:value="${machine.setting_3}" name = "set3" />
-<input type="hidden" th:value="${machine.setting_4}" name = "set4" />
-<input type="hidden" th:value="${machine.setting_5}" name = "set5" />
-<input type="hidden" th:value="${machine.setting_6}" name = "set6" />	
-<input type="hidden" th:value="${machine.setting2_1}" name = "set1" />
-<input type="hidden" th:value="${machine.setting2_2}" name = "set2" />
-<input type="hidden" th:value="${machine.setting2_3}" name = "set3" />
-<input type="hidden" th:value="${machine.setting2_4}" name = "set4" />
-<input type="hidden" th:value="${machine.setting2_5}" name = "set5" />
-<input type="hidden" th:value="${machine.setting2_6}" name = "set6" />
-
-
-</form>
-			</p>
-		</span>
-
-		<p><form th:action="@{/controller/title}" action="/controller/title" method="post">
-			<input type="submit" value="戻る" />
-			</form>	
-			</p>
-	<!--  	<p>
-			<input class="button3" type="button" value="バジリスク絆"
-				onclick="location.href='detail2.html'" />
-		</p> -->	
-	</Center>
-
-	<style type="text/css">
-
-
-/*HTML {
-	background-image: url(../i2.jpg),url(../i1.jpg);
-	background-position: right,left;
-	background-attachment:fixed,fixed;
-	background-repeat:no-repeat,no-repeat;
-	background-size:contain,contain;
-}*/
-
-
-input[type*="submit"] {
-width: 350px;
-white-space: normal;
-wordbreak: break-all;
-	/* 文字サイズを1.5emに指定 */
-	font-size: 1.5em;
-	/* 縦方向に5px
-     * 横方向に30pxの余白を指定 */
-	padding: 5px 30px;
-	/* 文字色を白色に指定 */
-	color: #fff;
-	/* ボーダーをなくす */
-	border-style: none;
-	/* ボタンの色を設定する*/
-	background-color: #22d;
-	/* ボタンの影の指定
-     * 影の横幅を2px
-     * 縦長を2px
-     * ぼかしを3px
-     * 広がりを1px
-     * 色を#666（グレー）に指定 */
-	box-shadow: 2px 2px 3px 1px #666;
-	-moz-box-shadow: 2px 2px 3px 1px #666;
-	-webkit-box-shadow: 2px 2px 3px 1px #666;
-	/* テキストの影の指定
-     * 影の横幅を1px
-     * 縦長を1px
-     * ぼかしを1px
-     * 色を#000（白）に指定 */
-	text-shadow: 1px 1px 1px #fff;
-	/* グラデーションの指定 */
-	background: -moz-linear-gradient(bottom, #36d, #248 50%, #36d);
-	background: -webkit-gradient(linear, left bottom, left top, from(#36d),
-		color-stop(0.5, #248), to(#36d));
-	/* 角丸の指定 */
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-	/* 透明度を20%に指定 */
-	opacity: 0.8;
-}
-.jumbotron {
-  background-image: url("../bb03.jpg");
-  background-size: cover;
-
-}
-</style>
-</div>
-</div>
-</body>
+	</body>
 </html>

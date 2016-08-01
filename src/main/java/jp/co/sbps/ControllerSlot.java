@@ -1,8 +1,6 @@
 package jp.co.sbps;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -173,20 +171,16 @@ public class ControllerSlot {
 	}
 
 	@RequestMapping("/controller/finNewMachine")
-	public String finNewMachine(@ModelAttribute MachineForm machineform,Model model) {
-		Map<String, Object> map = new HashMap<String, Object>();
-		map = machineform.edMachine();		
-		model.addAttribute("map1", map);
-		macDao.insert(map);	
+	public String finNewMachine(@ModelAttribute MachineForm machineform,Model model) {	
+		model.addAttribute("map1", machineform.edMachine());
+		macDao.insert(machineform.edMachine());	
 		return "finNewMachine";
 		}
 
 	@RequestMapping("/controller/finEditMachine")
 	public String finEditMachine(@ModelAttribute MachineForm machineform, Model model) {
-		Map<String, Object> map = new HashMap<String, Object>();
-		map = machineform.edMachine();
-		model.addAttribute("map1", map);	
-		macDao.update(map);
+		model.addAttribute("map1", machineform.edMachine());	
+		macDao.update(machineform.edMachine());
 		return "finEditMachine";
 	}
 

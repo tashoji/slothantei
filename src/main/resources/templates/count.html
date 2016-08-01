@@ -1,199 +1,195 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org" lang="ja" >
-<head>
-<title>すろっと</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<meta http-equiv="Content-Script-Type" content="text/javascript" />
-<meta http-equiv="Content-Style-Type" content="text/css" />
-<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<link
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
-	crossorigin="anonymous">
-</link>
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
-	integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
-	crossorigin="anonymous">
-</script>
-<script type="text/javascript">
-
-var count=new Object();
-count.i=0;
-count.f=function(){
-	this.i++;
-	var html=this.i;
-	document.getElementById("counter").innerHTML=html;
-}
-count.g=function(){
-	this.i--;
-	var html=this.i;
-	document.getElementById("counter").innerHTML=html;
-}
-count.j=0;
-count.a=function(){
-	this.j++;
-	var html=this.j;
-	document.getElementById("counter2").innerHTML=html;
-}
-count.b=function(){
-	this.j--;
-	var html=this.j;
-	document.getElementById("counter2").innerHTML=html;
-}
-</script>
-</head>
-<body style="font-family: HG正楷書体-PRO">
-  <div class="jumbotron">
-	<Center>
-	  <div class="container">
-		<h2>簡易こやくかうんた～</h2>
-		<div class="row">
-		<div class="col-md-6">
-		<h3>子役かうんたー1</h3><br/>
-		<td><SELECT name="setdif1" class="form-control">
-				<OPTION value=""></OPTION>
-				<OPTION value="BIG">BIG</OPTION>
-				<OPTION value="REG">REG</OPTION>
-				<OPTION value="合成">合成</OPTION>
-				<OPTION value="赤7">赤7</OPTION>
-				<OPTION value="青7">青7</OPTION>
-				<OPTION value="白7">白7</OPTION>
-				<OPTION value="リプレイ">リプレイ</OPTION>
-				<OPTION value="スイカ">スイカ</OPTION>
-				<OPTION value="弱スイカ">弱スイカ</OPTION>
-				<OPTION value="強スイカ">強スイカ</OPTION>
-				<OPTION value="チェリー">チェリー</OPTION>
-				<OPTION value="弱チェリー">弱チェリー</OPTION>
-				<OPTION value="強チェリー">強チェリー</OPTION>
-				<OPTION value="中段チェリー">中段チェリー</OPTION>
-				<OPTION value="共通ベル">共通ベル</OPTION>
-				<OPTION value="強ベル">強ベル</OPTION>
-				<OPTION value="ハズレ">ハズレ</OPTION>
-				<OPTION value="AT,ART">AT,ART</OPTION>
-				<OPTION value="AT,ART初当り">AT,ART初当り</OPTION>
-				<OPTION value="AT,ART直撃">AT,ART直撃</OPTION>
-		</SELECT></td><br/>
-		<button onclick="count.f()" class="btn btn-success btn-lg">+1</button>
-<button onclick="count.g()" class="btn btn-warning btn-lg">-1</button>
-</div>
-<div class="col-md-6">
-<h3>子役かうんたー2</h3><br/>
-		<td><SELECT name="setdif2" class="form-control">
-				<OPTION value=""></OPTION>
-				<OPTION value="BIG">BIG</OPTION>
-				<OPTION value="REG">REG</OPTION>
-				<OPTION value="合成">合成</OPTION>
-				<OPTION value="赤7">赤7</OPTION>
-				<OPTION value="青7">青7</OPTION>
-				<OPTION value="白7">白7</OPTION>
-				<OPTION value="リプレイ">リプレイ</OPTION>
-				<OPTION value="スイカ">スイカ</OPTION>
-				<OPTION value="弱スイカ">弱スイカ</OPTION>
-				<OPTION value="強スイカ">強スイカ</OPTION>
-				<OPTION value="チェリー">チェリー</OPTION>
-				<OPTION value="弱チェリー">弱チェリー</OPTION>
-				<OPTION value="強チェリー">強チェリー</OPTION>
-				<OPTION value="中段チェリー">中段チェリー</OPTION>
-				<OPTION value="共通ベル">共通ベル</OPTION>
-				<OPTION value="強ベル">強ベル</OPTION>
-				<OPTION value="ハズレ">ハズレ</OPTION>
-				<OPTION value="AT,ART">AT,ART</OPTION>
-				<OPTION value="AT,ART初当り">AT,ART初当り</OPTION>
-				<OPTION value="AT,ART直撃">AT,ART直撃</OPTION>
-		</SELECT></td><br/>
-		<button onclick="count.a()" class="btn btn-success btn-lg">+1</button>
-<button onclick="count.b()" class="btn btn-warning btn-lg">-1</button>
-</div>
-</div>
-	    <form th:action="@{/controller/nums}" action="/controller/nums" method="post">
-	    	<div class="row">
-	    	<div class="col-md-6">
-	    	<br/>
-	    	<th>回数</th>
-		<div id="counter"><input type = "text" name = "num" value =""/></div><br />
+	<head>
+		<title>すろっと</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="Content-Script-Type" content="text/javascript" />
+		<meta http-equiv="Content-Style-Type" content="text/css" />
+		<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+		<link
+			href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7"
+			crossorigin="anonymous">
+		</link>
+		<script
+			src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"
+			integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
+			crossorigin="anonymous">
+		</script>
+		<script type="text/javascript">
+			var count=new Object();
+			count.i=0;
+			count.f=function(){
+				this.i++;
+				var html=this.i;
+				document.getElementById("counter").innerHTML=html;
+			}
+			count.g=function(){
+				this.i--;
+				var html=this.i;
+				document.getElementById("counter").innerHTML=html;
+			}
+			count.j=0;
+			count.a=function(){
+				this.j++;
+				var html=this.j;
+				document.getElementById("counter2").innerHTML=html;
+			}
+			count.b=function(){
+				this.j--;
+				var html=this.j;
+				document.getElementById("counter2").innerHTML=html;
+			}
+		</script>
+	</head>
+	<body style="font-family: HG正楷書体-PRO">
+		<div class="jumbotron">
+			<Center>
+			<div class="container">
+				<h2>簡易こやくかうんた～</h2>
+				<div class="row">
+				<div class="col-md-6">
+				<h3>子役かうんたー1</h3><br/>
+				<td><SELECT name="setdif1" class="form-control">
+					<OPTION value=""></OPTION>
+					<OPTION value="BIG">BIG</OPTION>
+					<OPTION value="REG">REG</OPTION>
+					<OPTION value="合成">合成</OPTION>
+					<OPTION value="赤7">赤7</OPTION>
+					<OPTION value="青7">青7</OPTION>
+					<OPTION value="白7">白7</OPTION>
+					<OPTION value="リプレイ">リプレイ</OPTION>
+					<OPTION value="スイカ">スイカ</OPTION>
+					<OPTION value="弱スイカ">弱スイカ</OPTION>
+					<OPTION value="強スイカ">強スイカ</OPTION>
+					<OPTION value="チェリー">チェリー</OPTION>
+					<OPTION value="弱チェリー">弱チェリー</OPTION>
+					<OPTION value="強チェリー">強チェリー</OPTION>
+					<OPTION value="中段チェリー">中段チェリー</OPTION>
+					<OPTION value="共通ベル">共通ベル</OPTION>
+					<OPTION value="強ベル">強ベル</OPTION>
+					<OPTION value="ハズレ">ハズレ</OPTION>
+					<OPTION value="AT,ART">AT,ART</OPTION>
+					<OPTION value="AT,ART初当り">AT,ART初当り</OPTION>
+					<OPTION value="AT,ART直撃">AT,ART直撃</OPTION>
+				</SELECT></td><br/>
+				<button onclick="count.f()" class="btn btn-success btn-lg">+1</button>
+				<button onclick="count.g()" class="btn btn-warning btn-lg">-1</button>
 			</div>
 			<div class="col-md-6">
-			<br/>
-			<th>回数:</th>
-		<div id="counter2"><input type = "text" name = "num" value =""/></div><br />
+			<h3>子役かうんたー2</h3><br/>
+			<td><SELECT name="setdif2" class="form-control">
+				<OPTION value=""></OPTION>
+				<OPTION value="BIG">BIG</OPTION>
+				<OPTION value="REG">REG</OPTION>
+				<OPTION value="合成">合成</OPTION>
+				<OPTION value="赤7">赤7</OPTION>
+				<OPTION value="青7">青7</OPTION>
+				<OPTION value="白7">白7</OPTION>
+				<OPTION value="リプレイ">リプレイ</OPTION>
+				<OPTION value="スイカ">スイカ</OPTION>
+				<OPTION value="弱スイカ">弱スイカ</OPTION>
+				<OPTION value="強スイカ">強スイカ</OPTION>
+				<OPTION value="チェリー">チェリー</OPTION>
+				<OPTION value="弱チェリー">弱チェリー</OPTION>
+				<OPTION value="強チェリー">強チェリー</OPTION>
+				<OPTION value="中段チェリー">中段チェリー</OPTION>
+				<OPTION value="共通ベル">共通ベル</OPTION>
+				<OPTION value="強ベル">強ベル</OPTION>
+				<OPTION value="ハズレ">ハズレ</OPTION>
+				<OPTION value="AT,ART">AT,ART</OPTION>
+				<OPTION value="AT,ART初当り">AT,ART初当り</OPTION>
+				<OPTION value="AT,ART直撃">AT,ART直撃</OPTION>
+				</SELECT></td><br/>
+				<button onclick="count.a()" class="btn btn-success btn-lg">+1</button>
+				<button onclick="count.b()" class="btn btn-warning btn-lg">-1</button>
 			</div>
+			</div>
+			    <form th:action="@{/controller/nums}" action="/controller/nums" method="post">
+			    	<div class="row">
+			    	<div class="col-md-6">
+			    	<br/>
+			    	<th>回数</th>
+					<div id="counter"><input type = "text" name = "num" value =""/></div><br />
+					</div>
+					<div class="col-md-6">
+					<br/>
+					<th>回数:</th>
+					<div id="counter2"><input type = "text" name = "num" value =""/></div><br />
+					</div>
+					</div>
+					<input type="submit" value="データ送信" />
+				</form>
 				</div>
-			<input type="submit" value="データ送信" />
-		</form>
-</div>
-		<p><form th:action="@{/controller/title}" action="/controller/title" method="post">
-			<input type="submit" value="戻る" />
-			</form>	
-			</p>
-	</Center>
-
-	<style type="text/css">
-
-
-
-h2 {
-	position: relative;
-	padding: .25em 0 .5em .75em;
-	border-left: 6px solid #3498db;
-}
-
-h2::after {
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	content: '';
-	width: 100%;
-	height: 0;
-	border-bottom: 1px solid #ccc;
-}
-
-input[type*="submit"] {
-	/* 文字サイズを1.4emに指定 */
-	font-size: 1.4em;
-	/* 縦方向に5px
-     * 横方向に30pxの余白を指定 */
-	padding: 5px 35px;
-	/* 文字色を白色に指定 */
-	color: #fff;
-	/* ボーダーをなくす */
-	border-style: none;
-	/* ボタンの色を設定する*/
-	background-color: #22d;
-	/* ボタンの影の指定
-     * 影の横幅を2px
-     * 縦長を2px
-     * ぼかしを3px
-     * 広がりを1px
-     * 色を#666（グレー）に指定 */
-	box-shadow: 2px 2px 3px 1px #666;
-	-moz-box-shadow: 2px 2px 3px 1px #666;
-	-webkit-box-shadow: 2px 2px 3px 1px #666;
-	/* テキストの影の指定
-     * 影の横幅を1px
-     * 縦長を1px
-     * ぼかしを1px
-     * 色を#000（白）に指定 */
-	text-shadow: 1px 1px 1px #fff;
-	/* グラデーションの指定 */
-	background: -moz-linear-gradient(bottom, #36d, #248 50%, #36d);
-	background: -webkit-gradient(linear, left bottom, left top, from(#36d),
-		color-stop(0.5, #248), to(#36d));
-	/* 角丸の指定 */
-	-moz-border-radius: 5px;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-	/* 透明度を20%に指定 */
-	opacity: 0.8;
-}
-
-.jumbotron {
-  background-image: url("../bb02.jpg");
-  background-size: cover;
-}
-</style>
-
-</div>
-</body>
+				<p><form th:action="@{/controller/title}" action="/controller/title" method="post">
+				<input type="submit" value="戻る" />
+				</form>	
+				</p>
+			</Center>
+		
+			<style type="text/css">
+			
+				h2 {
+					position: relative;
+					padding: .25em 0 .5em .75em;
+					border-left: 6px solid #3498db;
+				}
+			
+				h2::after {
+					position: absolute;
+					left: 0;
+					bottom: 0;
+					content: '';
+					width: 100%;
+					height: 0;
+					border-bottom: 1px solid #ccc;
+				}
+			
+				input[type*="submit"] {
+					/* 文字サイズを1.4emに指定 */
+					font-size: 1.4em;
+					/* 縦方向に5px
+				     * 横方向に30pxの余白を指定 */
+					padding: 5px 35px;
+					/* 文字色を白色に指定 */
+					color: #fff;
+					/* ボーダーをなくす */
+					border-style: none;
+					/* ボタンの色を設定する*/
+					background-color: #22d;
+					/* ボタンの影の指定
+				     * 影の横幅を2px
+				     * 縦長を2px
+				     * ぼかしを3px
+				     * 広がりを1px
+				     * 色を#666（グレー）に指定 */
+					box-shadow: 2px 2px 3px 1px #666;
+					-moz-box-shadow: 2px 2px 3px 1px #666;
+					-webkit-box-shadow: 2px 2px 3px 1px #666;
+					/* テキストの影の指定
+				     * 影の横幅を1px
+				     * 縦長を1px
+				     * ぼかしを1px
+				     * 色を#000（白）に指定 */
+					text-shadow: 1px 1px 1px #fff;
+					/* グラデーションの指定 */
+					background: -moz-linear-gradient(bottom, #36d, #248 50%, #36d);
+					background: -webkit-gradient(linear, left bottom, left top, from(#36d),
+						color-stop(0.5, #248), to(#36d));
+					/* 角丸の指定 */
+					-moz-border-radius: 5px;
+					-webkit-border-radius: 5px;
+					border-radius: 5px;
+					/* 透明度を20%に指定 */
+					opacity: 0.8;
+				}
+			
+				.jumbotron {
+				  background-image: url("../bb02.jpg");
+				  background-size: cover;
+				}
+			</style>
+		</div>
+	</body>
 </html>
